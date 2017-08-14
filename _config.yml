@@ -16,7 +16,7 @@
 title: Adam Yang
 email: adam.yang121@gmail.com
 description: "Hello World!"
-baseurl: "/blog/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://AdamYang121.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
