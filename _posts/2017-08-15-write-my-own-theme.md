@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dig into Jekyll ( 1 )
+title: Dig into Jekyll (1)
 date: 2017-08-15 10:30:23 -0400
 categories: articles
 ---
