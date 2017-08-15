@@ -137,17 +137,15 @@ _YOUR CODES_
 _\`\`\`_
 
 **Example:**
+```markdown
 
-_```javascript_
+"```javascript
+var name = function() {
+console.log("Hello World!");
+}
+```" 
 
-_var name = function() {_
-
-_console.log("Hello World!");_
-
-_}_
-
-_```_
-
+```
 **Result:**
 ```javascript
 var name = function() {
