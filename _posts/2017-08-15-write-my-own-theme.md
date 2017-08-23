@@ -9,4 +9,7 @@ categories: articles
 
 
 # Get start to use Jekyll
-Jekyll is a static website framework, it is easy to build up a static website. And there are a lot of theme to use. The most important it super light, only several files to control the view which give the developer more freedom to customize their website.
+Jekyll is a static website framework, it is easy to build up a static website. And there are a lot of theme to use. The most important it super light, only several files to control the view which give the developer more freedom to customize their websites.
+
+
+
