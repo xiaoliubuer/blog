@@ -251,6 +251,3 @@ redis.expireat                    redis.lpop                        redis.publis
 redis.extend                      redis.lpush                       redis.pubsub                      redis.strlen                      
 redis.flushall                    redis.lpushx                      redis.punsubscribe                redis.subscribe 
 ```
-
-
-https://github.com/nateware/redis-objects

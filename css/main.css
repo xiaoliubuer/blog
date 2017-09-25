@@ -66,13 +66,13 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #2a7ae2;
+  color: #dd5211;
   text-decoration: none; }
   a:visited {
-    color: #1756a9; }
+    color: #b9b9b9; }
   a:hover {
-    color: #111;
-    text-decoration: underline; }
+    color: #dd9211;
+    text-decoration: none; }
   .social-media-list a:hover {
     text-decoration: none; }
     .social-media-list a:hover .username {
