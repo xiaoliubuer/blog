@@ -29,7 +29,6 @@ public:
 合并k个排好序的list，并分析复杂度。
 
 # Thinking
-
 # Shame answer
 ```c++
 // Merge sort
