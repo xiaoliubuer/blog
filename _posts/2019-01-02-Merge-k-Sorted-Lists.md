@@ -30,8 +30,6 @@ public:
 
 # Thinking
 
-
-
 # Shame answer
 ```c++
 // Merge sort
