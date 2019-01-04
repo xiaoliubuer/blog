@@ -82,11 +82,9 @@ bool TwoWin(vector<int> nums, int l, int r, int sum1, int sum2){
 	else
 		return !OneWin(nums, l + 1, r, sum1, sum2 + nums[l]) || !OneWin(nums, l, r - 1, sum1, sum2 + nums[r]);
 }
-
 bool PredictTheWinner(vector<int>& nums) {
     	if (nums.size() == 0) return false;
         return OneWin(nums, 0, nums.size() - 1, 0, 0);
-
     }
 };
 ```
