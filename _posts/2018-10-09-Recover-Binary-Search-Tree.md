@@ -50,8 +50,18 @@ Follow up:
 
 A solution using O(n) space is pretty straight forward.
 Could you devise a constant space solution?
-
-思路:
+# Function signature
+```c++
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        
+    }
+};
+```
+# 题意:
+就是一棵BST上有两个节点的位置被调换了。找出来并且恢复这个原来的二叉树。
+# 思路:
 有意思，因为是BST，所以要满足所有的BST的特性，左子树永远小于等于root，右子树永远大于root
 
 他说是有两个node给放错了。擦！！是谁放错的！！站起来！！
@@ -129,7 +139,7 @@ public:
             else
                 secondNode = root;
         }        
-        preNode = root;
+        preNode = root; // 这里一定要放在去右边节点之前
         helper(root->right);
     }
     void recoverTree(TreeNode* root) {
@@ -139,9 +149,34 @@ public:
     }
 };
 ```
+```c++
+//2019-01-11 Accepted！！
+class Solution {
+public:
+    TreeNode* s1 = nullptr, *s2 = nullptr;
+    TreeNode* temp;
+    void helper(TreeNode* root){
+        if (!root) return;
+        helper( root->left );
+        if (temp && temp->val > root->val){
+            if ( s1 == nullptr){
+                s1 = temp;
+                s2 = root;
+            }
+            else
+                s2 = root;
+        }
+        temp = root; //这里很重要！！！
+        helper(root->right);
+    }
+    void recoverTree(TreeNode* root) {
+        helper(root);
+        swap(s1->val, s2->val);
+    }
+};
+```
 
 3  2  1
-
 
 1 2 3 4 5 6 7 -> 1 2 7 4 5 6 3
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "261. Graph Valid Tree"
-date: 2018-10-31 22:19:23 -0400
+date: 2019-01-14 20:01:23 -0400
 categories: articles
 ---
 Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.

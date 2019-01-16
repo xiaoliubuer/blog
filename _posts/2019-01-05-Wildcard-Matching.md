@@ -66,6 +66,10 @@ public:
 ```
 # 题意
 给一个string s和pattern
+
+# 想法
+真的不是很会。
+
 # Shame answer
 ```c++
  bool isMatch(const char *s, const char *p) {
@@ -93,4 +97,34 @@ public:
 
         return !*p;  
     }
+```
+```c++
+// 答案翻版
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int sc = 0, pc = 0, match = 0, startIdx = -1;
+        while (pc < p.size()){
+            if (pc < p.size() && (p[pc] == '?' || s[sc] == p[pc])){
+                sc++;
+                pc++;
+            }
+            else if (pc < p.size() && p[pc] == '*'){
+                startIdx = pc;
+                match = sc;
+                pc++;
+            }
+            else if (startIdx != -1){
+                p = startIdx + 1;
+                match++;
+                sc = match;
+            }
+            else
+                return false;
+        }
+        while (pc < p.size() && p[pc] == '*')
+            pc++;
+        return pc == p.size();
+    }
+};
 ```
