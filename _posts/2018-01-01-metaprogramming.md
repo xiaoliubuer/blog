@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "metaprogramming"
-date: 2018-12-02 14:17:23 -0400
+date: 2018-01-01 14:17:23 -0400
 categories: articles
 ---
 

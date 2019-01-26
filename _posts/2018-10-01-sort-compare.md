@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sort and Compare"
-date: 2018-10-03 20:46:23 -0400
+date: 2018-01-01 20:46:23 -0400
 categories: articles
 ---
 # Sort

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "BST Find Predecessor and Successor"
-date: 2018-10-10 23:57:23 -0400
+date: 2018-01-01 23:57:23 -0400
 categories: articles
 ---
 基础练习， 在BST里面，找一个节点Predecessor和它的Successor
