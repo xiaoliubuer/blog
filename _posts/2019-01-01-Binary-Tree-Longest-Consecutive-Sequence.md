@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "298. Binary Tree Longest Consecutive Sequence"
+title:  "** 298. Binary Tree Longest Consecutive Sequence"
 date: 2019-01-01 14:18:23 -0400
 categories: articles
 ---
@@ -21,7 +21,6 @@ Input:
          5
 
 Output: 3
-
 Explanation: Longest consecutive sequence path is 3-4-5, so return 3.
 ```
 Example 2:
@@ -37,7 +36,6 @@ Input:
  1
 
 Output: 2 
-
 Explanation: Longest consecutive sequence path is 2-3, not 3-2-1, so return 2.
 ```
 # 题意

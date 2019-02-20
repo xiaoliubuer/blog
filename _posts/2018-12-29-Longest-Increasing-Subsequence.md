@@ -87,6 +87,25 @@ public:
 
 # 参考答案
 ```c++
+// 高级方法！！！！厉害！！
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> tails;
+        for(auto num: nums){
+            vector<int>::iterator it = lower_bound(tails.begin(), tails.end(), num);
+            if(it == tails.end()){
+                tails.push_back(num);
+            }else{
+                *it = num;
+            }
+            
+        }
+        return tails.size();
+    }
+};
+```
+```c++
 //DP 好好品味这个答案
 class Solution {
  public:
@@ -126,6 +145,27 @@ public:
             if (dp[i] > max) max = dp[i];
         }
         return max; 
+    }
+};
+```
+```c++
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        if ( nums.size() == 0 ) return 0;
+        int n = nums.size();
+        int res = 1;
+        int dp[n];
+        for (int i = 0; i < n; i++ ) dp[i] = 1;
+        for ( int i = 1; i < n; i++ ) {
+            for (int j = 0; j < i; j++ ) {
+                if ( nums[j] < nums[i] && dp[j] + 1 > dp[i]){
+                    dp[i] = dp[j] + 1;
+                }
+            }
+            if ( dp[i] > res ) res = dp[i];
+        }
+        return res;
     }
 };
 ```

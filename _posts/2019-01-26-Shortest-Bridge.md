@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "934. Shortest Bridge"
+title:  "** 934. Shortest Bridge"
 date: 2019-01-26 16:35:23 -0400
 categories: articles
 ---
@@ -42,3 +42,5 @@ public:
     }
 };
 ```
+# 题意
+题tm看了半天也没看懂～～
