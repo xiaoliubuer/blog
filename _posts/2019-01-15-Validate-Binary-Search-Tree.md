@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "98. Validate Binary Search Tree"
-date: 2019-01-15 20:58:23 -0400
+date: 2019-02-28 20:58:23 -0400
 categories: articles
 ---
 Given a binary tree, determine if it is a valid binary search tree (BST).
@@ -78,6 +78,43 @@ public:
     }
 };
 ```
+
+# My Wrong answer
+```c++
+// 即使能保证每个根节点和叶子结点符合条件，但还要保证整棵树也全部满足。所以仅仅看相邻的结点是不够的。
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        if (!root) return true;
+        bool l = isValidBST(root->left);
+        if(root->left && root->val <= root->left->val) return false;
+        bool r = isValidBST(root->right);
+        if(root->right && root->val >= root->right->val) return false;
+        return l && r;
+    }
+};
+```
+```c++
+// Accepted 02/28/2019
+class Solution {
+public:
+    
+    bool helper(TreeNode* root, TreeNode* lefEdge, TreeNode* rigEdge){
+        if (!root) return true;
+        bool l = helper(root->left, lefEdge, root);
+        bool r = helper(root->right,root, rigEdge);
+        if (lefEdge && root->val <= lefEdge->val) return false;
+        if (rigEdge && root->val >= rigEdge->val) return false;
+        return l && r;
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        if (!root) return true;
+        return helper(root, NULL, NULL);
+    }
+};
+```
+
 # 参考答案
 ```c++
 class Solution {

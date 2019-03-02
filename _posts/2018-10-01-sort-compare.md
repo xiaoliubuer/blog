@@ -60,7 +60,7 @@ struct MovieCompare {
 		return m1.rating > m2.rating;
 		}
 	} movieCompare;
-priority_queue<Movie, vector<Movie>, MovieCompare> min_heap; 
+priority_queue<Movie, vector<Movie>, MovieCompare> min_heap;  // 默认为最小对，root为最小值
 ```
 4. Example4:
 ```c++
