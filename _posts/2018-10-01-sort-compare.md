@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sort and Compare"
+title:  "Sort and Compare, queue, priority"
 date: 2018-01-01 20:46:23 -0400
 categories: articles
 ---
@@ -67,3 +67,6 @@ priority_queue<Movie, vector<Movie>, MovieCompare> min_heap;  // 默认为最小
 priority_queue<int, vector<int>, less<int>>    myqueue; // Max heap, root is the largest
 priority_queue<int, vector<int>, greater<int>> myqueue; // Min heap, root is the smallest
 ```
+
+
+5. priority_queue<pair, vector<pair>, [](pair& A, pair& B){ A.first < B.first}> myqueue;

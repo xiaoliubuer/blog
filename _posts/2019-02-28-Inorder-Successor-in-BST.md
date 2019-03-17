@@ -32,3 +32,39 @@ public:
     }
 };
 ```
+```c++
+// Accepted!!
+class Solution {
+public:
+    TreeNode* getLeft(TreeNode* root){
+        if (!root) return root;
+        if (root->left) return getLeft(root->left);
+        else return root;
+    }
+    TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
+        if ( !root ) return root;
+        TreeNode* res;
+        if ( p->val < root->val) {
+            res = inorderSuccessor(root->left, p);
+            if (!res) res = root;
+        }
+        else if ( p->val > root->val) res = inorderSuccessor(root->right, p);
+        else res = getLeft(root->right);
+        return res;
+    }
+};
+
+class Solution {
+public:
+    TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
+        if (!root) return root;
+        if (p->val < root->val) {
+            TreeNode* res = inorderSuccessor(root->left, p);
+            return !res ? root : res;
+            }
+        else
+            return inorderSuccessor(root->right, p);
+    }
+};
+
+```
