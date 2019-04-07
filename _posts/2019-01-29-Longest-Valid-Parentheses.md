@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "** 32. Longest Valid Parentheses"
+title:  "* 32. Longest Valid Parentheses"
 date: 2019-01-29 19:44:23 -0400
 categories: articles
 ---
@@ -32,6 +32,57 @@ public:
 # 想法
 这个还是不太会诶～～
 # shame answer
+```c++
+//Accepted!!! My answer
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        int res = 0;
+        for (int i = 0; i < s.size(); i++){
+            if ( s[i] == '('){
+                int lc = 0;
+                int j = i;
+                while ( j < s.size() ){
+                    if ( s[j] == '(' ) lc++;
+                    else lc--;
+                    if (lc == 0) res = max(res, j + 1 - i);
+                    if ( lc < 0 ) break;
+                    j++;
+                }
+                if (lc < 0) res = max(res, j-i);
+            }
+        }
+        return res;
+    }
+};
+```
+```c++
+// Faster a little bit
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        int res = 0;
+        for (int i = 0; i < s.size(); i++){
+            if ( s[i] == '('){
+                int lc = 0;
+                int j = i;
+                while ( j < s.size() ){
+                    if ( s[j] == '(' ) lc++;
+                    else lc--;
+                    if (lc == 0) res = max(res, j + 1 - i);
+                    if ( lc < 0 ) break;
+                    j++;
+                }
+                if (lc < 0) {
+                    res = max(res, j-i);
+                    i = j;
+                }
+            }
+        }
+        return res;
+    }
+};
+```
 ```c++
 // 这个解法是，太神奇啦～怎么会想到这么解呢？
 class Solution {

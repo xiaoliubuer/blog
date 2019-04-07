@@ -16,17 +16,19 @@ The count-and-say sequence is the sequence of integers with the first five terms
 11 is read off as "two 1s" or 21.
 21 is read off as "one 2, then one 1" or 1211.
 # Function signature
+```c++
 class Solution {
 public:
     string countAndSay(int n) {
         
     }
 };
-
+```
 # 题意
 就是看着给的顺序来数，然后输出几个几，几个几的东西。
 
 # 参考答案
+
 ```c++
 class Solution {
 public:
@@ -46,5 +48,6 @@ string countAndSay(int n) {
         res = cur;
     }
     return res;
-}
-};```
+    }
+};
+```

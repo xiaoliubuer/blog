@@ -49,6 +49,30 @@ sort(intervals.begin(), intervals.end(), [](Interval& a, Interval& b){
 ```
 # 尝试答案
 ```c++
+//Accepted!!
+class Solution {
+public:
+    vector<Interval> merge(vector<Interval>& intervals) {
+        sort(intervals.begin(), intervals.end(), [](Interval& A, Interval& B){
+            return A.start < B.start;
+        });
+        if ( intervals.size() < 2) return intervals;
+        vector<Interval> res;
+        Interval curr = intervals[0];
+        for (int i = 1; i < intervals.size(); i++){
+            if (intervals[i].start <= curr.end) 
+                curr.end = max(curr.end, intervals[i].end);
+            else{
+                res.push_back(curr);
+                curr = intervals[i];
+            }
+        }
+        res.push_back(curr);
+        return res;
+    }
+};
+```
+```c++
 //这个应该是work的
 class Solution {
 public:

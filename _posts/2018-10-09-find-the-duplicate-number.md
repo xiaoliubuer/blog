@@ -49,4 +49,29 @@ public:
     }
 };
 ```
-看看答案多简单呀，你咋就是没有搞明白呢？？？
+```c++
+//Accepted!!!
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() - 1; i++){
+            if (nums[i] == nums[i+1]) return nums[i];
+        }
+        return -1;
+    }
+};
+```
+```c++
+// Accepted!!!!
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        for(int i = 0; i < nums.size(); i++){
+            if (nums[abs(nums[i]) - 1] < 0 ) return abs(nums[i]);
+            nums[abs(nums[i]) - 1] *= -1;
+        }
+        return -1;
+    }
+};
+```

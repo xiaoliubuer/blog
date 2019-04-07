@@ -68,6 +68,36 @@ public:
     }
 };
 ```
+
+```c++
+// Accepted!!!
+class Solution {
+public:
+    
+    void helper(vector<int>& candidates, int target, vector<int> temp, vector<vector<int>>& res, int cur, int idx){
+        if (cur == target){
+            res.push_back(temp);
+            return;
+        }
+        for (int i = idx; i < candidates.size() && cur + candidates[i] <= target; i++){
+            vector<int> t = temp;
+            t.push_back(candidates[i]);
+            cur += candidates[i];
+            helper(candidates, target, t, res, cur, i);
+            cur -= candidates[i];
+        }
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> res;
+        
+        if (candidates.size() == 0) return res;
+        sort(candidates.begin(), candidates.end());
+        vector<int> temp;
+        helper(candidates, target, temp, res, 0, 0);
+        return res;
+    }
+};
+```
 这里就涉及到一个问题，是先进行条件满足的判断呢？还是后做这个判断？？
 # 参考答案
 ```c++

@@ -75,6 +75,97 @@ public:
     }
 };
 ```
+```c++
+// Wrong Answer!!!!
+class Solution {
+public:
+    /**
+     * @param airplanes: An interval array
+     * @return: Count of airplanes are in the sky.
+     */
+    bool isOverlap(Interval A, Interval B){
+        if ( A.start >= B.end || A.end <= B.start ) return false;
+        else
+        return true;
+    }
+    int countOfAirplanes(vector<Interval> &airplanes) {
+        // write your code here
+        int res = 0;
+        if (airplanes.size() < 2) return airplanes.size();
+        for (int i = 1; i < airplanes.size() - 1; i++){
+            int count = 1;
+            for (int j = i + 1; j < airplanes.size(); j++ ){
+                if (isOverlap(airplanes[i], airplanes[j])) count++;
+            }
+            
+            for ( int k = 0; k < i; k++ ){
+                if(isOverlap(airplanes[i], airplanes[k])) count++;
+            }
+            res = max(res, count);
+        }
+        return res;
+    }
+};
+```
+```c++
+// Accepted!!!
+class Solution {
+public:
+    /**
+     * @param airplanes: An interval array
+     * @return: Count of airplanes are in the sky.
+     */
+    int countOfAirplanes(vector<Interval> &airplanes) {
+        // write your code here
+        if ( airplanes.size() < 2) return airplanes.size();
+        int res = 0;
+        int last = 0;
+        unordered_map<int, int> mymap;
+        for (auto i : airplanes) {
+            mymap[i.start]++;
+            mymap[i.end]--;
+            last = max(last, max(i.start, i.end));
+        }
+        int count = 0;
+        for (int i = 0; i <= last; i++){
+            count += mymap[i];
+            res = max(res, count);
+        }
+        return res;
+    }
+};
+```
+```c++
+// Accepted!!! Beat 100%
+class Solution {
+public:
+    int countOfAirplanes(vector<Interval> &airplanes) {
+        // write your code here
+        if ( airplanes.size() < 2) return airplanes.size();
+        vector<int> start, end;
+        for (auto i : airplanes) {
+            start.push_back(i.start);
+            end.push_back(i.end);
+        }
+        sort(start.begin(), start.end());
+        sort(end.begin(), end.end());
+        int count = 0;
+        int res = 0;
+        for (int i = 0, j = 0; j < end.size() && i < start.size();){
+            if ( start[i] < end[j]) {
+                count++;
+                i++;
+            }
+            else{
+                count--;
+                j++;
+            }
+            res = max(res, count);
+        }
+        return res;
+    }
+};
+```
 # 参考答案
 ```c++
 /* 基本思想，把start和end都存到vector里面。
@@ -105,6 +196,31 @@ public:
                 idx_end++;
             }
             res++;
+        }
+        return res;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    int countOfAirplanes(vector<Interval> &airplanes) {
+        if (airplanes.size() < 2) return airplanes.size();
+        int count = 0;
+        int res = 0;
+        priority_queue<int, vector<int>, greater<int> > landing;
+        sort(airplanes.begin(), airplanes.end(), [](Interval& a, Interval& b){
+            return a.start < b.start;
+        });
+        
+        for( int i = 0; i < airplanes.size(); i++ ){
+            while(!landing.empty() && landing.top() <= airplanes[i].start ){
+                landing.pop();
+                count--;
+            }
+            landing.push(airplanes[i].end);
+            count++;
+            res = max(res, count);
         }
         return res;
     }

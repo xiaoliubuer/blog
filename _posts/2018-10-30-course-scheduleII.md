@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "210. Course Schedule II"
-date: 2018-10-30 22:46:23 -0400
+date: 2019-04-06 17:40:01 -0400
 categories: articles
 ---
 
@@ -34,7 +34,6 @@ Note:
 这道题和207的区别是什么呢？？ 前一到只是 true or false，
 
 这一道就是要把整顺序打印出来。
-
 ```c++
 class Solution {
 public:
@@ -72,6 +71,44 @@ public:
     }
 };
 ```
+```c++
+// Accepted! 2019-04-04
+class Solution {
+public:
+    vector<int> findOrder(int numCourses, vector<pair<int, int>>& prerequisites) {
+        vector<int> res;
+        vector<bool> visited(numCourses, false);
+        vector<int> degree(numCourses, 0);
+        vector<vector<int>> path(numCourses);
+        for (auto i : prerequisites){
+            int pre = i.second;
+            int post= i.first;
+            degree[post]++;
+            path[pre].push_back(post);
+        }
+        
+        queue<int> buff;
+        for (int i = 0; i < degree.size(); i++){
+            if (degree[i] == 0) buff.push(i);
+        }
+        
+        int sum = 0; // Important!!!!
+        while(!buff.empty()){
+            int front = buff.front();
+            res.push_back(front);
+            buff.pop();
+            sum++;
+            for (int i = 0; i < path[front].size(); i++){
+                degree[path[front][i]]--;
+                if (degree[path[front][i]] == 0){
+                    buff.push(path[front][i]);
+                }
+            }
+        }
+        return sum == numCourses ? res : vector<int>();
+    }
+};
+```
 
 来，我来试试DFS，DFS是一只要把一条路径找完，然后在找另一个点的一条路径
 ```c++
@@ -84,6 +121,47 @@ public:
     	vector<int> res;
     	if (numCourses == 0 || prerequisites.size() == 0) return res;
     	
+    }
+};
+```
+```c++
+// Accepted! 04/06/2019
+class Solution {
+public:
+    vector<int> findOrder(int numCourses, vector<pair<int, int>>& prerequisites) {
+        
+        vector<int> res;
+        vector<int> indegree(numCourses, 0);
+        vector<vector<int>> path(numCourses);
+        
+        for (auto i : prerequisites){
+            int pre = i.second;
+            int post= i.first;
+            indegree[post]++;
+            path[pre].push_back(post);
+        }
+        
+        queue<int> buffer;
+        for (int i = 0; i < indegree.size(); i++){
+            if (indegree[i] == 0)
+                buffer.push(i);
+        }
+        
+        while(!buffer.empty()){
+            int front = buffer.front();
+            buffer.pop();
+            numCourses--;
+            res.push_back(front);
+            for (int i = 0; i < path[front].size(); i++){
+                int idx = path[front][i]; 
+                indegree[idx]--;
+                if (indegree[idx] == 0) {
+                    buffer.push(idx);
+                }
+            }
+        }
+        return numCourses == 0 ? res : vector<int>();
+        
     }
 };
 ```

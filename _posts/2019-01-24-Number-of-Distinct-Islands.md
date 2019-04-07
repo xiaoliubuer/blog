@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ". 694. Number of Distinct Islands"
+title:  "694. Number of Distinct Islands"
 date: 2019-01-24 18:56:23 -0400
 categories: articles
 ---
@@ -93,6 +93,37 @@ public:
     		}
     	}
         return exist.size();
+    }
+};
+```
+
+```c++
+// Accepted!!!
+class Solution {
+public:
+    void dfs(vector<vector<int>>& grid, int x, int y, string dir, string& p){
+        if ( x < 0 || x >= grid.size() || y < 0 || y >= grid[0].size() || grid[x][y] == 0 ) return;
+            p += dir;
+            grid[x][y] = 0;
+            dfs(grid, x - 1, y, "d", p);
+            dfs(grid, x + 1, y, "u", p);
+            dfs(grid, x, y - 1, "l", p);
+            dfs(grid, x, y + 1, "r", p);
+            p += "b"; // 很重要!!! 用来区别每一层的顺序，否则有可能层与层之间形成的顺序是巧合一样的。
+    }
+    int numDistinctIslands(vector<vector<int>>& grid) {
+        unordered_set<string> pattern;
+        if (grid.size() == 0 || grid[0].size() == 0) return 0;
+        for (int i = 0; i < grid.size(); i++){
+            for (int j = 0; j < grid[0].size(); j++){
+                if (grid[i][j] == 1) {
+                    string p = "";
+                    dfs(grid, i, j, "", p); //  这里是“” 还是“o” 无所谓 
+                    pattern.insert(p); 
+                }
+            }
+        }
+        return pattern.size();
     }
 };
 ```

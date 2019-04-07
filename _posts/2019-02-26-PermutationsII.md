@@ -20,6 +20,39 @@ Output:
 ```c++
 class Solution {
 public:
+    void helper(vector<int>& nums, vector<int> temp, vector<vector<int>>& res, vector<bool> visited){
+        if (nums.size() == temp.size()){
+            res.push_back(temp);
+            return;
+        }
+        
+        for (int i = 0; i < nums.size(); i++){
+            if ( visited[i] || (i > 0 && nums[i] == nums[i-1] && !visited[i-1])){  
+                continue;
+            }
+            else{
+                vector<int> t = temp;
+                t.push_back(nums[i]);
+                visited[i] = true;
+                helper(nums, t, res, visited);
+                visited[i] = false;
+            }
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> res;
+        if ( nums.size() == 0 ) res;
+        vector<int> temp;
+        sort(nums.begin(), nums.end());
+        vector<bool> visited(nums.size(), false);
+        helper(nums, temp, res, visited);
+        return res;
+    }
+};
+```
+```c++
+class Solution {
+public:
     void helper(vector<int>& nums, vector<vector<int>>& res, vector<int> temp, vector<bool> visited){
         if ( nums.size() == temp.size()) res.push_back(temp);
         

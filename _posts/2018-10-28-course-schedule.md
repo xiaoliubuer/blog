@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "207. Course Schedule"
-date: 2018-10-28 21:12:23 -0400
+date: 2019-04-06 17:39:01 -0400
 categories: articles
 ---
 There are a total of n courses you have to take, labeled from 0 to n-1.
@@ -160,3 +160,62 @@ public:
 **如果要用到helper函数的话，一定要明确这个helper函数的作用是什么。他是干什么用的，返回值是什么。这里很重要，这样就不会让我们对helper founction迷惑啦～～**
 
 
+```c++
+// Accepted! 2019-04-03
+// DFS
+class Solution {
+public:
+    
+    bool find_circle(vector<vector<int>>& path, int i, vector<bool>& visited){
+        if (visited[i]) return true;
+        visited[i] = true;
+        for (int j = 0; j < path[i].size(); j++){
+                if (find_circle(path, path[i][j],visited)) return true;
+        }
+        visited[i] = false;
+        return false;
+    }
+    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
+        vector<vector<int>> path(numCourses);
+        vector<bool> visited(numCourses, false);
+        for (auto i : prerequisites) {
+            int pre = i.second;
+            int post= i.first;
+            path[pre].push_back(post);
+        }
+        for (int i = 0; i < numCourses; i++){
+            if (find_circle(path, i, visited)) return false;
+        }
+        return true;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    
+    bool findCircle(vector<vector<int>>& path, int idx, vector<bool>&  visited){
+        if (visited[idx]) return true;
+        visited[idx] = true;
+        for (int i = 0; i < path[idx].size(); i++){
+            if (findCircle(path, path[idx][i], visited)) return true;
+        }
+        visited[idx] = false;
+        return false;
+    }
+    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
+        vector<bool>  visited(numCourses, false);
+        vector<vector<int>> path(numCourses);
+        for (auto i : prerequisites){
+            int pre = i.second;
+            int post= i.first;
+            path[pre].push_back(post);
+        }
+        
+        for (int i = 0; i < numCourses; i++){
+            if (findCircle(path, i, visited)) return false;
+        }
+        return true;
+    }
+};
+```
