@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "547. Friend Circles"
-date: 2018-12-27 07:20:23 -0400
+date: 2019-04-07 15:21:00 -0400
 categories: articles
 ---
 There are N students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a direct friend of B, and B is a direct friend of C, then A is an indirect friend of C. And we defined a friend circle is a group of students who are direct or indirect friends.
@@ -168,36 +168,32 @@ return res;
 //Union Find
 class Solution {
 public:
-    int Find(vector<int> root, int node){
-        while( node != root[node])
-            node = root[node];
-        return node;
+    int Find(int val, vector<int>& parent){
+        while(val != parent[val]) val = parent[val];
+        return val;
     }
-	void Union(vector<int>& root, int first, int second){
-        int idx = Find(root, first);
-        root[second] = idx;
+    void Union(int p1, int p2, vector<int>& parent){
+        parent[p2] = p1;
     }
     int findCircleNum(vector<vector<int>>& M) {
-        if ( M.size() == 0 || M[0].size() == 0 ) return 0;
-        int res = M.size();
-        vector<int> root;
-        for (int i = 0; i < M.size(); i++){
-            root.push_back(i);
+        int n = M.size();
+        vector<int> parent(n);
+        for (int i = 0 ; i < n; i++){
+            parent[i] = i;
         }
-        
-        for (int i = 0; i < M.size(); i++) {
-            for (int j = 0; j < M[0].size(); j++) {
-                if (M[i][j] == 1){
-                    int first = Find(root, i);
-                    int second= Find(root, j);
-                    if ( first != second ) {
-                        res--;
-                        Union(root, first, second);
+        for (int i = 0; i < M.size(); i++){
+            for (int j = 0; j < M[0].size(); j++){
+                if ( M[i][j] == 1 ){
+                    int p1 = Find(i, parent);
+                    int p2 = Find(j, parent);
+                    if ( p1 != p2 ){
+                        Union(p1, p2, parent);
+                        n--;
                     }
                 }
             }
         }
-        return res;
+        return n;
     }
 };
 ```

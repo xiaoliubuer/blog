@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "323. Number of Connected Components in an Undirected Graph"
-date: 2018-12-26 06:55:23 -0400
+date: 2019-04-07 14:43:00 -0400
 categories: articles
 ---
 Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to find the number of connected components in an undirected graph.
@@ -92,44 +92,40 @@ You can assume that no duplicate edges will appear in edges. Since all edges are
 ```c++
 return counter;
 ```
-6. Full code
 ```c++
-	class Solution {
-	public:
-	    int countComponents(int n, vector<pair<int, int>>& edges) {
-			if ( edges.size() == 0 ) return n;
-			//init a matrix to store the connection relationship
-			vector<vector<int> > matrix(n, vector<int>(n, 0)); 
-			for (int i = 0; i < edges.size(); i++ ){
-				int pre = edges[i].first;
-				int post= edges[i].second;
-				matrix[pre][post] = 1;
-				matrix[post][pre] = 1;
-			}
-			vector<int> visited(n, 0); // 0 means is not visted yet
-			stack<int> buff;
-			int counter = 0;
-			//DFS还有两种，iteration 和 recursion
-			for (int i = 0; i < n; i++ ) {
-				if (visited[i] == 0) {
-					buff.push();
-					counter++;
-				}
-				while(!buff.empty()){
-					int top = buff.top();
-					buff.pop();
-					visited[top] = 1;
-					for (int j = i; j < matrix[i].size(); j++ ) {
-						int temp = matrix[i][j];
-						if ( temp == 1 && visited[temp] == 0 ) buff.push(j);
-					}
-				}
-			}
-	        return counter;
-	    }
-	};
+// Accepted!! 2019-04-07
+// Recursion
+class Solution {
+public:
+    
+    void helper(vector<vector<int>>& path, int idx, vector<bool>& visited){
+        if (visited[idx]) return;
+        visited[idx] = true;
+        for (int i = 0; i < path[idx].size(); i++){
+            if ( path[idx][i] == 1){
+                helper(path, i, visited);
+            }
+        }
+    }
+    int countComponents(int n, vector<pair<int, int>>& edges) {
+        vector<vector<int>> path(n, vector<int>(n, 0));
+        vector<bool> visited(n, false);
+        for (auto i : edges) {
+            path[i.first][i.second] = 1;
+            path[i.second][i.first] = 1;
+        }
+        
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            if (visited[i] == false){
+                helper(path, i, visited);
+                res++;
+            }
+        }
+     return res;   
+    }
+};
 ```
-
 # 方法2: Union find
 就是把来源于同样一个根的所有节点都连到一起
 0. Funciton signature:
@@ -225,8 +221,6 @@ public:
     }
 };
 ```
-
-
 ```c++
 // DFS Iteration
 class Solution {
@@ -262,45 +256,31 @@ public:
     }
 };
 ```
-
-
 ```c++
 // Union Find
-	class Solution {
-	public:
-		int find(vector<int> root, int node){
-			while( root[node] != node){
-                node = root[root[node]];
-			}
-			return node;
-		}
-
-		void Union(vector<int>& root, pair<int, int> edge){
-			int first = edge.first;
-			int second = edge.second;
-            int idx = find(root, first);
-			root[idx] = second;
-		}
-
-	    int countComponents(int n, vector<pair<int, int>>& edges) {
-			//最初，设置每个点的root就是他们自己
-			if (edges.size() == 0) return n; // Corner case
-
-			int res = n;
-			vector<int> root(n, 0);
-			for (int i = 0; i < n; i++) {
-				root[i] = i;
-			}
-			// 对每一个相连的边进行处理
-			for (int i = 0; i < edges.size(); i++){
-				int first = edges[i].first;
-				int second= edges[i].second;
-				if (find(root, first) != find(root, second)){
-					Union(root, edges[i]);
-					res--;
-				}
-			}
-			return res;
-	    }
-	};
+class Solution {
+public:
+    int Find(int val, vector<int>& parent){
+        while (val != parent[val]) val = parent[val];
+        return val;
+    }
+    void Union(int p1, int p2, vector<int>& parent){
+        parent[p2] = p1;
+    }
+    int countComponents(int n, vector<pair<int, int>>& edges) {
+        vector<int> parent(n);
+        for (int i = 0; i < n; i++){
+            parent[i] = i;
+        }
+        for (auto i : edges) {
+            int p1 = Find(i.first, parent);
+            int p2 = Find(i.second,parent);
+            if ( p1 != p2 ) {
+                Union(p1, p2, parent);
+                n--; // Important!!!!
+            }
+        }
+        return n;
+    }
+};
 ```
