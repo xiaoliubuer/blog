@@ -1,14 +1,53 @@
 ---
 layout: post
-title:  "* Sort - Merge Sort"
+title:  "All sort algorithms"
 date: 2019-01-02 08:22:23 -0400
 categories: articles
 ---
-```
-Example:
 
-4 6 7 3 4 5 2 4 5 34 5 65 
+# Bubble Sort
+```c++
+
+void BubbleSort(){
+
+}
+
+
 ```
+# Insert Sort
+```c++
+void InsertSort(){
+
+}
+```
+
+# Shell Sort
+```c++
+```
+
+
+
+# Quick Sort
+```c++
+
+void QuickSort(){
+
+}
+```
+
+# Merge Sort
+```c++
+void MergeSort(){
+
+}
+```
+
+
+
+
+
+
+
 
 ```c++
 //Merge sort
@@ -28,3 +67,4 @@ void partation(vector<int>& nums, int left, int right){
 void MergeSort(vector<int>& nums){
 
 }
+```

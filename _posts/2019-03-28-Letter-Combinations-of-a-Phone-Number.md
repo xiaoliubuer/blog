@@ -40,3 +40,54 @@ public:
     }
 };
 ```
+```c++
+// 2019-04-23
+// Accepted!!
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        string keys[10] = {" ", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        vector<string> res;
+        if ( digits.size() == 0 ) return res;
+        res.push_back("");
+        for (auto i : digits) {
+            int num = i - '0';
+            string key = keys[num];
+            vector<string> temp;
+            for (auto j : key){
+                for (int k = 0; k < res.size(); k++ ){
+                    temp.push_back( res[k] + j);
+                }
+            }
+            res = temp;
+        }
+        return res;
+    }
+};
+```
+
+```c++
+// 2019-04-23
+// Accepted!!! DFS
+class Solution {
+public:
+    void helper(string digits, int idx, string curr, vector<string>& keys, vector<string>& res) {
+        if (idx >= digits.size()){
+            res.push_back(curr);
+            return;
+        };
+        string letters = keys[digits[idx] - '0']; // 操，注意输入的是"23"
+        for ( auto i : letters ) {
+            string temp = curr + i;
+            helper(digits, idx + 1, temp, keys, res);
+        }
+}
+    vector<string> letterCombinations(string digits) {
+        vector<string> keys = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        vector<string> res;
+        if ( digits.size() == 0 ) return res;
+        helper(digits, 0, "", keys, res);
+        return res;
+    }
+};
+```
