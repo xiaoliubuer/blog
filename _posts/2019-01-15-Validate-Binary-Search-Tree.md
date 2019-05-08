@@ -46,6 +46,24 @@ BST性质，左子树一定都小于root，右子树一定都大于根。这一�
 root一定要大于left的右边界，一定小于right的左边界。
 
 其实这里就是两种解决方法，top-down，Botton-up。参考答案用的是第一种，我用的是第二种，可惜暂时不work，有小bug。
+```c++
+// Interesting!!!
+class Solution {
+public:
+    bool helper(TreeNode* lEdge, TreeNode* rEdge, TreeNode* root){
+        if ( !root ) return true;
+        bool left = helper(lEdge, root, root->left);
+        bool right= helper(root, rEdge, root->right);
+        if (lEdge && lEdge->val >= root->val ) return false;
+        if (rEdge && rEdge->val <= root->val ) return false;
+        return left && right;
+    }
+    bool isValidBST(TreeNode* root) {
+        if ( !root ) return true;
+        return helper(NULL, NULL, root);
+    }
+};
+```
 # 尝试解解
 ```c++
 // 总体思路是对的，但是就是没有过～是因为还有corner case没有处理到。

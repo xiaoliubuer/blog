@@ -99,6 +99,35 @@ __注意，BST的问题一定要转化成升序数组来观察！__
 
 所以是怎样？就是一定还是要有两个指针，指向这两个出了问题的点
 ```c++
+// Accepted! 2019-05-08
+class Solution {
+public:
+    TreeNode *first = nullptr, *second = nullptr;
+    TreeNode* pre = nullptr;
+    
+    void helper(TreeNode* root ){
+        if ( !root ) return;
+        helper(root->left);
+        // You can't get your precessor and successor at current node in BST
+        if ( pre && pre->val > root->val ) {
+            if ( !first && !second ){
+                first = pre;
+                second = root;
+            }
+            else{
+                second = root;
+            }
+        }
+        pre = root;
+        helper(root->right);
+    }
+    void recoverTree(TreeNode* root) {
+        helper(root);
+        swap(first->val, second->val);
+    }
+};
+```
+```c++
 //Answer
 class Solution {
     TreeNode* first=NULL;

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "* 737. Sentence Similarity II"
-date: 2019-01-22 20:53:23 -0400
+date: 2019-05-03 21:32:00 -0400
 categories: articles
 ---
 Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
@@ -15,7 +15,6 @@ Similarity is also symmetric. For example, "great" and "fine" being similar is t
 Also, a word is always similar with itself. For example, the sentences words1 = ["great"], words2 = ["great"], pairs = [] are similar, even though there are no specified similar word pairs.
 
 Finally, sentences can only be similar if they have the same number of words. So a sentence like words1 = ["great"] can never be similar to words2 = ["doubleplus","good"].
-
 Note:
 
 The length of words1 and words2 will not exceed 1000.
@@ -75,85 +74,113 @@ public:
     }
 };
 ```
-```c++
-// DFS 到底哪里可以减枝
-
-class Solution {
-public:
-    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<pair<string, string>> pairs) {
-    	if ( words1.size() == words2.size() ) return false;
-
-    }
-};
-```
-
-```c++
-// Union find. 如何用这种方法解答呢？？
-// 这个就很有意思了～
-// 
-class Solution {
-public:
-    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<pair<string, string>> pairs) {
-        
-    }
-};
-```
 # Shame answer
 ```c++
-class Solution {
+// Union Find!!!!!!! Shame answer!!!
+class Solution { // Union Find
 public:
-    bool areSentencesSimilarTwo(vector<string>& a, vector<string>& b, vector<pair<string, string>> pairs) {
-        if (a.size() != b.size()) return false;
-        map<string, string> m;
-        for (pair<string, string> p : pairs) {
-            string parent1 = find(m, p.first), parent2 = find(m, p.second);
-            if (parent1 != parent2) m[parent1] = parent2;
+    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {
+        if ( words1.size() != words2.size() ) return false;
+        unordered_map<string, string> mapping;
+        for ( auto i : pairs ) {
+            string p1 = find(mapping, i[0]);
+            string p2 = find(mapping, i[1]);
+            if ( p1 != p2 ) mapping[p1] = p2;
         }
-
-        for (int i = 0; i < a.size(); i++)
-            if (a[i] != b[i] && find(m, a[i]) != find(m, b[i])) return false;
-
-        return true;
-    }
-
-private:
-    string find(map<string, string>& m, string s) {
-        return !m.count(s) ? m[s] = s : (m[s] == s ? s : find(m, m[s]));
-    }
-};
-```
-```c++
-class Solution {
-public:
-    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<pair<string, string>> pairs) {
-        if (words1.size() != words2.size()) return false;
-        unordered_map<string, unordered_set<string>> p;
-        for (auto &vp : pairs) {
-            p[vp.first].emplace(vp.second); // 双向都存
-            p[vp.second].emplace(vp.first);
-        }
-        for (int i = 0; i < words1.size(); i++) {
-            unordered_set<string> visited;
-            if (isSimilar(words1[i], words2[i], p, visited)) continue;
-            else return false;
+        
+        for ( int i = 0; i < words1.size(); i++ ){
+            string p1 = find(mapping, words1[i]);
+            string p2 = find(mapping, words2[i]);
+            if ( words1[i] != words2[i] && p1 != p2 ) return false;
         }
         return true;
     }
     
-    bool isSimilar(string& s1, string& s2, unordered_map<string, unordered_set<string>>& p, unordered_set<string>& visited) {
-        if (s1 == s2) return true;
+    string find(unordered_map<string, string>& mapping, string s) {
+        if ( mapping.count(s) == 0 ){ // This piece code must be here first to verify the s exist here or not.
+            mapping[s] = s;
+            return mapping[s];
+        }
+        else{
+            if ( mapping[s] == s) return mapping[s];
+            else{
+                string p = find(mapping, mapping[s]);
+                mapping[s] = p;
+                return mapping[s];
+            }
+        }
+    }
+};
+```
+```c++
+// Accepted! a little bit cleaner
+class Solution { // Union Find
+public:
+    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {
+        if ( words1.size() != words2.size() ) return false;
+        unordered_map<string, string> mapping;
         
-        visited.emplace(s1);
-        for (auto s : p[s1]) {
-            if (!visited.count(s) && isSimilar(s, s2, p, visited))
-                return true;
+        for ( auto i : pairs ) {
+            string p1 = find(mapping, i[0]);
+            string p2 = find(mapping, i[1]);
+            if ( p1 != p2 ) mapping[p1] = p2;
         }
         
+        for ( int i = 0; i < words1.size(); i++ ){
+            string p1 = find(mapping, words1[i]);
+            string p2 = find(mapping, words2[i]);
+            if ( words1[i] != words2[i] && p1 != p2 ) return false;
+        }
+        return true;
+    }
+    
+    string find(unordered_map<string, string>& mapping, string s) {
+        if ( mapping.count(s) == 0 ){
+            mapping[s] = s;
+        }
+        else{
+            if ( mapping[s] != s) {
+                string p = find(mapping, mapping[s]);
+                mapping[s] = p;
+            }
+        }
+        return mapping[s];
+    }
+};
+```
+```c++
+// DFS,   Shame answer!!!
+class Solution {
+public:
+    bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {
+        if ( words1.size() != words2.size() ) return false;
+        unordered_map<string, unordered_set<string>> mapping;
+        
+        for ( auto i : pairs ) {
+            mapping[i[0]].emplace(i[1]);
+            mapping[i[1]].emplace(i[0]);
+        }
+        
+        for ( int i = 0; i < words1.size(); i++ ) {
+            unordered_set<string> visited;
+            if ( !helper(mapping, words1[i], words2[i], visited)) return false; // if any of the word in sentence return false, then return false. Then return true
+        }
+        return true;
+    }
+    
+    bool helper(unordered_map<string, unordered_set<string>>& mapping, string w1, string w2, unordered_set<string>& visited){
+        if ( w1 == w2 ) return true;
+        visited.emplace(w1);
+        for ( auto i : mapping[w1]) {
+            if ( visited.count(i) == 0 && helper(mapping, i, w2, visited)) // !visited.count(i)
+                return true;
+        }
         return false;
     }
 };
 ```
 ```c++
+// Iteration DFS!!
 class Solution {
 public:
     bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<pair<string, string>> pairs) {

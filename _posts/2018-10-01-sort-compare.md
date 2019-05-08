@@ -7,11 +7,11 @@ categories: articles
 # Sort
 1. Example1:
 ```c++
+// Important!!!!
 sort(intervals.begin(), intervals.end(), [](Interval& interval1, Interval& interval2){
 	return interval1.start < interval2.start;
 });
 ```
-
 2. Example2:
 ```c++
 sort(es.begin(), es.end(), [](pair<int, int> a, pair<int, int> b){
@@ -26,8 +26,7 @@ sort(es.begin(), es.end(), [](pair<int, int> a, pair<int, int> b){
 			return distance2 < distance1;
 		});
 ```
-
-# Compare
+# compare
 1. Example1:
 ```c++
 PriorityQueue<vector<int>> pq = new PriorityQueue<vector<int>>(
@@ -55,6 +54,7 @@ queue<Point, vector<Point>, Compare> pq;
 ```
 3. Example3:
 ```c++
+// Important!!!!!
 struct MovieCompare {
 		bool operator() (const Movie& m1, const Movie& m2) { 
 		return m1.rating > m2.rating;
@@ -64,6 +64,7 @@ priority_queue<Movie, vector<Movie>, MovieCompare> min_heap;  // 默认为最小
 ```
 4. Example4:
 ```c++
+// Important!!!!
 priority_queue<int, vector<int>, less<int>>    myqueue; // Max heap, root is the largest
 priority_queue<int, vector<int>, greater<int>> myqueue; // Min heap, root is the smallest
 ```

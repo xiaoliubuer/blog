@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "56. Merge Intervals"
-date: 2019-01-08 21:20:23 -0400
+date: 2019-04-29 23:19:00 -0400
 categories: articles
 ---
 Given a collection of intervals, merge all overlapping intervals.
@@ -68,6 +68,115 @@ public:
             }
         }
         res.push_back(curr);
+        return res;
+    }
+};
+```
+```c++
+// Accepted!!
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        unordered_map<int,int> st, ed;
+        int low = 100, high = -100;
+        for ( auto i : intervals){
+            st[i[0]]++;
+            ed[i[1]]++;
+            low = min(low, i[0]);
+            high= max(high,i[1]);
+        }
+        vector<vector<int>> res;
+        int bal = 0;
+        vector<int> temp;
+        for (int i = low; i <= high; i++) {
+            if (st[i] > 0) {
+                bal += st[i];
+                if ( temp.empty() ) temp.push_back(i);
+            }
+            if (ed[i] > 0) {
+                bal -= ed[i];
+                if ( bal == 0 ){
+                    temp.push_back(i);
+                    res.push_back(temp);
+                    temp.clear();
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+```c++
+// Accepted! Use set. Bad performance.
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        map<int,int> st, ed;
+        set<int> pos;
+        int low = 100, high = -100;
+        for ( auto i : intervals){
+            st[i[0]]++;
+            ed[i[1]]++;
+            pos.emplace(i[0]);
+            pos.emplace(i[1]);
+        }
+        vector<vector<int>> res;
+        int bal = 0;
+        vector<int> temp;
+        for (auto it = pos.begin(); it != pos.end(); it++){
+            if (st[*it] > 0) {
+                bal += st[*it];
+                if ( temp.empty() ) temp.push_back(*it);
+            }
+            if (ed[*it] > 0) {
+                bal -= ed[*it];
+                if ( bal == 0 ){
+                    temp.push_back(*it);
+                    res.push_back(temp);
+                    temp.clear();
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+```c++
+// Accepted!! 
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<int> st, ed;
+        for ( auto i : intervals){
+            st.push_back(i[0]);
+            ed.push_back(i[1]);
+        }
+        sort(st.begin(), st.end());
+        sort(ed.begin(), ed.end());
+        vector<vector<int>> res;
+        if (intervals.empty()) return res;
+        int bal = 0;
+        vector<int> temp;
+        for (int i = 0, j = 0; i < st.size() && j < ed.size();){
+            if (st[i] <= ed[j] ){
+                if ( temp.empty() ) {
+                    temp.push_back(st[i]);
+                }
+                bal++;
+                i++;
+            }
+            else{
+                if ( bal > 0 ) bal--;
+                if ( bal == 0) {
+                    temp.push_back(ed[j]);
+                    res.push_back(temp);
+                    temp.clear();
+                }
+                j++;
+            }
+        }
+        if ( temp.size() == 1 ) temp.push_back(ed.back());
+        res.push_back(temp);
         return res;
     }
 };

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "734. Sentence Similarity"
-date: 2019-04-22 20:26:00 -0400
+date: 2019-05-03 20:32:00 -0400
 categories: articles
 ---
 Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
@@ -38,9 +38,6 @@ public:
 2. 把字典存储一个map
 3. 然后遍历两个句子。
 如果 A[i] == B[i]|| map[A[i]] == B[i] || map[B[i]] == A[i], 那就过
-
-map<string, set<string>> ?
-
 # 尝试解解
 ```c++
 class Solution {
@@ -57,6 +54,30 @@ public:
         for ( int i = 0 ; i < words1.size(); i++ ) {
             if ( words1[i] != words2[i] && dic[words1[i]].count(words2[i]) != 1 && dic[words2[i]].count(words1[i]) !=1 ) 
                 return false;
+        }
+        return true;
+    }
+};
+```
+```c++
+// Accepted! Clean answer
+// 2019-05-03
+class Solution {
+public:
+    bool areSentencesSimilar(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {
+        if ( words1.size() != words2.size() ) return false;
+        unordered_map<string, unordered_set<string>> mapping;
+        for ( auto i : pairs) { // Build mapping
+            string w1 = i[0];
+            string w2 = i[1];
+            mapping[w1].emplace(w2);
+            mapping[w2].emplace(w1);
+        }
+        
+        for ( int i = 0; i < words1.size(); i++ ) {
+            string w1 = words1[i];
+            string w2 = words2[i];
+            if ( w1 != w2 && mapping[w1].count(w2) == 0 && mapping[w2].count(w1) == 0) return false;
         }
         return true;
     }
