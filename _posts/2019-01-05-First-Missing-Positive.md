@@ -57,6 +57,21 @@ public:
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
+        unordered_set<int> myset;
+        for(auto i : nums) myset.emplace(i);
+        int i = 1;
+        while ( i < INT_MAX){
+            if (myset.find(i) == myset.end()) return i;
+            i++;
+        }
+        return -1;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
         for(int i = 0; i < n; ++ i)
             while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i])

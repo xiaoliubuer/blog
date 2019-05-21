@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "c++ tricky operations"
+title:  "c++ tricky operations function"
 date: 2018-01-01 10:52:23 -0400
 categories: articles
 ---
@@ -26,3 +26,27 @@ string s = "Hello" + to_stirng(2019);
   
     return 0; 
 ```
+- isalpha
+```c++
+ if ( isalpha(str[i]))
+```
+- isalnum
+```
+Checks whether c is either a decimal digit or an uppercase or lowercase letter.
+```
+
+- isblank
+
+- isdigit
+
+- islower
+
+- isspace
+
+- isupper
+
+- isxdigit
+
+- tolower
+
+- toupper

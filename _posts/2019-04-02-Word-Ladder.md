@@ -38,7 +38,38 @@ Output: 0
 
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 ```
-
+```c++
+// Accepted!! 2019-05-12
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> record(wordList.begin(), wordList.end());
+        queue<string> buff;
+        int res = 0;
+        buff.push(beginWord);
+        while (!buff.empty()) {
+            res++;
+            int curr_size = buff.size();
+            for (int i = 0; i < curr_size; i++){
+                string front = buff.front();
+                buff.pop();
+                for ( int k = 0; k < front.size(); k++) {
+                    string temp = front;
+                    for ( int c = 'a'; c <= 'z'; c++){
+                        temp[k] = c;
+                        if ( temp != front && record.count(temp)) {
+                            if ( temp == endWord ) return res + 1;
+                            buff.push(temp);
+                            record.erase(temp);
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+};
+```
 ```c++
 class Solution {
 public:
