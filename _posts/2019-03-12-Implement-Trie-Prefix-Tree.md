@@ -22,6 +22,58 @@ Note:
 You may assume that all inputs are consist of lowercase letters a-z.
 All inputs are guaranteed to be non-empty strings.
 ```c++
+// Accepted! 2019-05-27
+class Trie {
+public:
+    /** Initialize your data structure here. */
+    struct TreeNode {
+        bool isEnd = false;
+        TreeNode* children[26] = {nullptr};
+        
+    };
+    
+    Trie() : root( new TreeNode()){
+    }
+    
+    /** Inserts a word into the trie. */
+    void insert(string word) {
+        TreeNode *curr = root;
+        for ( int i = 0; i < word.size(); i++ ) {
+            char c = word[i];
+            if ( !curr->children[c-'a'] ){
+                curr->children[c-'a'] = new TreeNode();
+            }
+            curr = curr->children[c-'a'];
+        }
+        curr->isEnd = true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+        TreeNode *curr = root;
+        for ( int i = 0; i < word.size(); i++ ) {
+            char c = word[i];
+            if ( !curr->children[c-'a'] ) return false;
+            curr = curr->children[c-'a'];
+        }
+        return curr->isEnd;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string prefix) {
+        TreeNode *curr = root;
+        for ( int i = 0; i < prefix.size(); i++ ) {
+            char c = prefix[i];
+            if ( !curr->children[c-'a'] ) return false;
+            curr = curr->children[c-'a'];
+        }
+        return true;
+    }
+    
+    TreeNode* root;
+};
+```
+```c++
 // Accepted!!
 class Trie {
 public:

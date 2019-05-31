@@ -18,6 +18,26 @@ vector<string> split::split_string(string target, char delimiter){
 ```
 
 ```c++
+// By default delimiter is ' ' (space) 
+    string str = "this is a sentence";
+    istringstream in(str);
+
+    vector<string> tokens;
+    for (string word; in >> word;) {
+        tokens.push_back(word);
+        cout << word << "\n";
+    }
+
+    istringstream in2(str);
+    string t1;
+    while( in2 >> t1){
+        tokens.push_back(t1);
+        cout << t1 << "\n";
+    }
+    cout << tokens.size();
+```
+
+```c++
 // Easy understand
 vector<string> split(string s, char delimiter){
    vector<string> tokens;

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "389. Find the Difference"
-date: 2019-01-01 09:42:23 -0400
+date: 2019-05-20 09:42:00 -0400
 categories: articles
 ---
 Given two strings s and t which consist of only lowercase letters.
@@ -30,7 +30,11 @@ Explanation:
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        
+        char temp = 'a';
+        for ( auto i : s) temp ^= i;
+        for ( auto i : t) temp ^= i;
+        temp ^= 'a';
+        return temp;
     }
 };
 ```

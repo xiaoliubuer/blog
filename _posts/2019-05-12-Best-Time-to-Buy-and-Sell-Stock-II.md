@@ -32,6 +32,7 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 ```
 ```c++
+// [7,1,5,3,6,4]
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -44,7 +45,39 @@ public:
         return T_ik0;
     }
 };
+/*
+T_ik0: 0,   0,   4,   4,  7,  7
+T_ik1: -7,  -1,  -1,  1,  1,  1
+*/
 ```
+
+```c++
+// [7,1,5,3,6,4]
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int T_ik0 = 0, T_ik1 = INT_MIN;
+        for (int price : prices) {
+            int T_ik0_old = T_ik0;
+            T_ik0 = max(T_ik0, T_ik1 + price); //Still have 1 chance to plus current price
+            T_ik1 = max(T_ik1, old_Tik0 - price);// At this time, when I still have 1 chance, the max value I have with one chance will be max with last change or last_time_sell old_Tik0 - current price
+        }
+        return T_ik0;
+    }
+/*
+T_ik0: 0,  
+T_ik1: 7, 
+*/
+};
+/* 
+T_ik0 = max(T_ik0, T_ik1 - price);
+When I get to this step, how to decide the value of T_ik1, T_ik1's value should be  
+T_ik1 = max (T_ik1, old_Tik0 + price);
+*/ 
+
+```
+
+
 ```c++
 class Solution {
 public:

@@ -29,6 +29,26 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
 ```
+```c++
+// DP solution, answer
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        vector<int> dp(s.size()+1, 0);
+        dp[0] = 1;
+        for (int i = 0; i < s.size(); i++) {
+            for (auto &w : wordDict) {
+                int idx = i-(int)w.size()+1;
+                if (idx >= 0 && dp[idx] == 1) {
+                    string temp = s.substr(idx, w.size());
+                    if (temp == w) dp[i+1] = 1;
+                }
+            }
+        }
+        return dp[dp.size()-1];
+    }
+};
+```
 
 ```c++
 class Solution {

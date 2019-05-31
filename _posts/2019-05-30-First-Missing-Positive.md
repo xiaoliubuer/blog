@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "* 41. First Missing Positive"
-date: 2019-01-05 12:14:23 -0400
+title:  "41. First Missing Positive"
+date: 2019-05-30 21:43:00 -0400
 categories: articles
 ---
 Given an unsorted integer array, find the smallest missing positive integer.
@@ -51,9 +51,9 @@ public:
     }
 };
 ```
-
-# Shame answer
 ```c++
+// Answer
+// 2019/01/05
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
@@ -69,12 +69,21 @@ public:
 };
 ```
 ```c++
+/*
+THis is the problem whiich is that if there is not a missing number, it must be 
+0 1 2 3 4 5 6
+
+2 3 4 5 7 8 9
+
+0 1 2 3 4 5 6
+
+*/
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
         for(int i = 0; i < n; ++ i)
-            while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i])
+            while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) // nums[i] <= n which means that it still in the scope of the array.
                 swap(nums[i], nums[nums[i] - 1]);
         
         for(int i = 0; i < n; ++ i)

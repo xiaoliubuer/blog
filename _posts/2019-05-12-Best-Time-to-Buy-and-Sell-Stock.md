@@ -36,7 +36,37 @@ public:
         return T_i10;
     }
 };
+
+// [7,1,5,3,6,4]
+
+// T_i10: 0.  0.  4.  4.  5. 5 
+// T_i11: -7  -1. -1. -1. -1 -1
 ```
+```c++
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int T_i10 = 0, T_i11 = INT_MAX;
+        for ( int price : prices ) {
+            T_i10 = max(T_i10, price - T_i11);
+            T_i11 = min(T_i11, price);
+        }
+        return T_i10;
+    }
+};
+// [7,1,5,3,6,4]
+
+// T_i10:  0,  0,  4,  4,  5,  5,
+// T_i11:  7,  1,  1,  1,  1,  1
+/*
+ The solution represent that when we at price:
+ T_i10: how much money that we earned if we only have 1 time transaction and there's 0 chance left.
+ T_i11: how much money that we earned if we only have 1 time transaction and there is still 1 chance to make. The lowest price that we can by in.
+*/
+```
+
+
 ```c++
 class Solution {
 public:

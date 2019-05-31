@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "* 42. Trapping Rain Water"
-date: 2019-01-05 14:13:23 -0400
+title:  "42. Trapping Rain Water"
+date: 2019-05-24 21:48:00 -0400
 categories: articles
 ---
 Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
@@ -27,10 +27,23 @@ public:
 # 想法
 这是一道什么题呢?? 怎么想？？ 真的没想出来怎么做呀！从哪里入手呢？
 
-# 考点
-two pointers？
-
-
+```c++
+//Accepted!!
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        if ( n < 3 ) return 0;
+        vector<int> left_max(n, 0), right_max(n,0);
+        int res = 0;
+        for ( int i = 1; i < n; i++) left_max[i] = max(left_max[i-1], height[i-1]);
+        for ( int i = n-2; i >= 0; i--) right_max[i] = max(right_max[i+1], height[i+1]);
+        for ( int i = 0; i < n; i++)
+            res += max(0, min(left_max[i], right_max[i]) - height[i]);
+        return res;
+    }
+};
+```
 # Shame answer
 ```c++
 class Solution {
