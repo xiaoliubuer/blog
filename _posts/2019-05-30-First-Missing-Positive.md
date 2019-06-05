@@ -77,6 +77,22 @@ THis is the problem whiich is that if there is not a missing number, it must be
 
 0 1 2 3 4 5 6
 
+1 2 3 4 5
+
+Example:
+
+(5) 1 4 2 3
+
+3 (1) 4 2 5
+
+1 3 (4) 2 5
+
+1 3 2 (4) 5
+
+
+
+
+
 */
 class Solution {
 public:
