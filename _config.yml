@@ -34,8 +34,10 @@ markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
-exclude:
-  - Gemfile
-  - Gemfile.lock
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
 include:
   - "_img"
+
+exclude: ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor']
