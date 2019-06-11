@@ -19,7 +19,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 # Tips
 多举一些例子，理解题意，明白规律，然后就知道该怎么解了！
 
-
+# Good answer [link](https://leetcode.com/problems/next-permutation/discuss/13867/C%2B%2B-from-Wikipedia)
 ```c++
 class Solution {
 public:
