@@ -25,10 +25,34 @@ public:
         int n = heights.size();
         int res = 0;
         for ( int i = 0; i <= n; i++ ) {
-            while( !buff.empty() && ( i == n || heights[i] <= heights[buff.top()])){
+            while( !buff.empty() && ( i == n || heights[i] <= heights[buff.top()])){ // Key part, why here???
                 int top = buff.top();
                 buff.pop();
                 res = max(res, heights[top]*( buff.empty() ? i : i - buff.top() - 1));
+            }
+            buff.push(i);
+        }
+        return res;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> buff;
+        int n = heights.size();
+        int res = 0;
+        for ( int i = 0; i <= n; i++ ) {
+            while( !buff.empty() && ( i == n || heights[i] <= heights[buff.top()])){
+                int top = buff.top();
+                buff.pop();
+                int width = 0;
+                if ( buff.empty() )
+                    width = i;
+                else 
+                    width = i - buff.top() - 1;
+                res = max(res, heights[top]* width);
             }
             buff.push(i);
         }
@@ -44,7 +68,6 @@ public:
         stack<int> st;
         for (int i = 0; i <= n; i++) {
             while (!st.empty() && (i == n || A[st.top()] >= A[i])) { // A[st.top()] >= A[i], current rectangle shorter than previous one
-
                 pos = st.top(); 
                 st.pop();
                 ans = max(ans, A[pos] * (st.empty() ? i : i-st.top()-1));
