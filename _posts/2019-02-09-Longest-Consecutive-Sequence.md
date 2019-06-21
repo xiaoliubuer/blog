@@ -29,6 +29,27 @@ O(n)的时间复杂度，就很有意思。
 怎么判断这个是连续的？确定是连续的
 就是把所有的数存到一个set中，然后扫描。
 ```c++
+//Accepted!!
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> myset(nums.begin(), nums.end());
+        int res = 0;
+        for (auto i : nums) {
+            if (!myset.count(i-1)) {
+                int j = 0;
+                while (myset.find(i) != myset.end()) {
+                    i++;
+                    j++;
+                    res = max(res, j);
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+```c++
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
@@ -46,6 +67,30 @@ public:
   		}
   	}
   	return longestStreak;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> set;
+        int answer = 0;
+        int n = nums.size();
+        
+        for(int i = 0; i < n; i++)
+            set.insert(nums[i]);
+        
+        for(int i = 0; i < n; i++){
+            if(set.find(nums[i]-1) == set.end()){
+                int j = nums[i];
+                while(set.find(j) != set.end())
+                    j++;
+                answer = max(answer, j - nums[i]); 
+            }
+        }
+        
+        return answer;
     }
 };
 ```
