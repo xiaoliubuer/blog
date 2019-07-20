@@ -45,6 +45,38 @@ bank: ["AAAACCCC", "AAACCCCC", "AACCCCCC"]
 
 return: 3
 ```
+```c++
+// Accepted! 2019-07-15
+class Solution {
+public:
+    int minMutation(string start, string end, vector<string>& bank) {
+        unordered_set<string> record(bank.begin(), bank.end());
+        queue<string> buff;
+        buff.push(start);
+        int res = 0;
+        while( !buff.empty() ){
+            res++;
+            int buff_size = buff.size();
+            for ( int i = 0; i < buff_size; i++ ) {
+                string front = buff.front();
+                buff.pop();
+                for ( int j = 0; j < front.size(); j++ ) {
+                    string temp = front;
+                    for( char k = 'A'; k < 'Z'; k++ ) {
+                        temp[j] = k;
+                        if ( temp != front && record.count(temp) ) { 
+                            if ( temp == end ) return res;
+                            buff.push(temp);
+                            record.erase(temp);
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+};
+```
 
 ```c++
 class Solution {

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "31. Next Permutation"
-date: 2019-03-23 18:53:23 -0400
+date: 2019-03-23 18:53:00 -0400
 categories: articles
 ---
 Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
@@ -21,13 +21,32 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 
 # Good answer [link](https://leetcode.com/problems/next-permutation/discuss/13867/C%2B%2B-from-Wikipedia)
 ```c++
+// Interesting 
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int index = 0;
+        for ( int i = 1; i < nums.size(); i++ ) {
+            if ( nums[i-1] < nums[i]) index = i;
+        }
+        
+        if ( index > 0 ) {
+            int i = nums.size() - 1;
+            while ( i > (index - 1) && nums[index - 1] >= nums[i])  // Important!  >= take time to understand
+                i--; // important
+                swap(nums[index - 1], nums[i]);
+        }
+        reverse( nums.begin() + index, nums.end());
+    }
+};
+```
+```c++
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         int index = 0,swapindex = 0;
         for (int i = 1; i < nums.size(); i++)
-            if  (nums[i - 1] < nums[i])
-                index = i;
+            if  (nums[i - 1] < nums[i]) index = i;
         if (index > 0){
             int i = nums.size() - 1;
             while (i > (index - 1) && nums[index-1] >= nums[i]) i--;

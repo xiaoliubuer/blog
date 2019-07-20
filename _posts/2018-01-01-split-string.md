@@ -5,7 +5,7 @@ date: 2018-01-01 14:17:23 -0400
 categories: articles
 ---
 ```c++
-// C++ helper to split the string with a delimiter
+// C++ helper to split the string with a delimiter, specify delimiter 
 vector<string> split::split_string(string target, char delimiter){
     vector<string> tokens;
     string token;
@@ -15,6 +15,16 @@ vector<string> split::split_string(string target, char delimiter){
     }
     return tokens;
 }
+```
+```c++
+// Good answer with default delimiter ' '
+    string str = "this is   a sentence";
+    istringstream in(str);
+
+    vector<string> tokens;
+    for (string word; in >> word;) {
+        tokens.push_back(word);
+    }
 ```
 
 ```c++

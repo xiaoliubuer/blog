@@ -46,6 +46,28 @@ public:
 很重要，这个可以解决所有关于排列，组合的DSF的问题。也就是:
 helper函数需要从第一个元素开始算。首先要确定helper函数的退出机制。
 ```c++
+//2019/06/30
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> res;
+        vector<int> tmp;
+        helper(0, tmp, res, candidates, target);
+        return res;
+    }
+    
+    void helper(int idx, vector<int> tmp, vector<vector<int>>& res, vector<int>& candidates, int target ){
+        if ( idx >= candidates.size() || target < 0) return;
+        if ( target == 0 ) res.push_back(tmp);
+        for ( int i = idx; i < candidates.size(); i++ ) {
+            tmp.push_back(candidates[i]);
+            helper(i, tmp, res, candidates, target - candidates[i]);
+            tmp.pop_back();
+        }
+    }
+};
+```
+```c++
 class Solution {
 public:
 	void helper(vector<int>& candidates, vector<vector<int>>& res, int target, int idx, vector<int>& curr){ // curr, reference or copy??

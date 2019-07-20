@@ -19,31 +19,21 @@ Given n = 3, there are a total of 5 unique BST's:
     /     /       \                 \
    2     1         2                 3
 ```
-# Function signature
-```c++
-class Solution {
-public:
-    int numTrees(int n) {
-        
-    }
-};
-```
 ```c++
 // 2019/05/29
 // Best answer
 class Solution {
 public:
 int numTrees(int n) {
-    vector<int> dp(n+1, 0);
-    dp[0] = 1;
+    vector<int> dp(n+1, 0); // Represent what? when have n node, how many trees types it will be.
+    dp[0] = 1; 
     dp[1] = 1;
     for ( int i = 2; i <= n; i++ ) {
         for ( int j = 1; j <= i; j++ ) {
-            dp[i] += dp[j - 1] * dp[ i - j ];
+            dp[i] += dp[j - 1] * dp[ i - j ]; // dp[0] * dp[1]
         }
     }
     return dp[n];
 }
-
 };
 ```

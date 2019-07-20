@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  ". 105. Construct Binary Tree from Preorder and Inorder Traversal"
-date: 2019-01-12 15:39:23 -0400
+title:  "105. Construct Binary Tree from Preorder and Inorder Traversal"
+date: 2019-06-25 15:39:23 -0400
 categories: articles
 ---
 Given preorder and inorder traversal of a tree, construct the binary tree.
@@ -63,6 +63,31 @@ helper(root->right);
 那怎么办呢？？卡在了如何拆分这两个vector，这个地方好复杂。
 答案用的是index。我来试试。
 
+```c++
+class Solution {
+public:
+    unordered_map<int, int> map_idx;
+    vector<int> post;
+    TreeNode* helper(int& index, int left, int right){
+        if(left == right) return nullptr;
+        TreeNode *root = new TreeNode(post[index]);
+        int pivot = map_idx[post[index]];
+        index--;
+        root->right = helper(index, pivot + 1, right);
+        root->left = helper(index, left, pivot);
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        post = postorder;
+        int size = postorder.size();
+        for(int i = 0; i < size; i++){
+            map_idx[inorder[i]] = i;
+        }
+        int index = size - 1;
+        return helper(index, 0, size);
+    }
+};
+```
 ```c++
 // preorder = [3,9,20,15,7]
 // inorder  = [9,3,15,20,7]

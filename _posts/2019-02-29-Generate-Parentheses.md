@@ -16,7 +16,37 @@ For example, given n = 3, a solution set is:
   "()()()"
 ]
 ```
-
+```c++
+// Accepted!! 2019-07-10
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        if ( n == 0 ) return res;
+        
+        helper("", 0, 0, n, res);
+        return res;
+    }
+    
+    void helper(string tmp, int l, int r, int n, vector<string>& res) {
+        if (tmp.size() == n * 2) {
+            res.push_back(tmp);
+            return;
+        }
+        if ( l < n ) {
+            tmp.push_back('(');
+            helper(tmp, l + 1, r, n, res);
+            tmp.pop_back();
+        }
+        
+        if ( r < l ) {
+            tmp.push_back(')');
+            helper(tmp, l, r + 1, n, res);
+            tmp.pop_back();   
+        }
+    }
+};
+```
 ```c++
 // Accepted!!!!
 class Solution {

@@ -11,7 +11,42 @@ Example:
 Input: "25525511135"
 Output: ["255.255.11.135", "255.255.111.35"]
 ```
-
+```c++
+//2019-07-10
+class Solution {
+public:
+    vector<string> restoreIpAddresses(string s) {
+        vector<string> res;
+        if (s.size() > 12 || s.size() < 4) return res;
+        helper(s, 0, 0, "", res);
+        return res;
+    }
+    void helper(string s, int idx, int sect, string tmp, vector<string>& res){
+        if ( idx == s.size() && sect == 4 ) {
+            res.push_back(tmp);
+        } else {
+            for ( int i = idx; i < s.size(); i++ ) {
+                if ( sect < 4 && i-idx < 3 && Valid(s, idx, i)){
+                    tmp += s.substr(idx, i - idx + 1);
+                    sect++;
+                    if ( sect < 4 ) tmp.push_back('.');
+                    helper(s, i+1, sect, tmp, res);
+                    if ( sect < 4 ) tmp.pop_back();
+                    sect--;
+                    for(int j = 0; j < i - idx + 1; j++) tmp.pop_back();
+                }
+            }
+        }
+    }
+    bool Valid(string s, int start, int end){
+        string temp = s.substr(start, end-start+1);
+        int ip = stoi(temp);
+        if(s[start] == '0' && start != end) return false; // leading 0
+        else if(ip >= 0 && ip <= 255) return true;
+        return false;
+    }
+};
+```
 ```c++
 class Solution {
 public:

@@ -21,6 +21,26 @@ Example 3:
 Input: "carerac"
 Output: true
 ```
+```c++
+// Easier understandable answer
+class Solution {
+public:
+    bool canPermutePalindrome(string s) {
+      unordered_set<char> Count;
+      
+      for (auto i : s) {
+        if (isalpha(i)) {
+          if (Count.find(i) != Count.end())
+            Count.erase(i);
+          else
+            Count.insert(i);
+        }
+      }
+      
+      return Count.size() <=1;
+    }
+};
+```
 
 ```c++
 class Solution {
