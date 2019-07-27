@@ -6,7 +6,6 @@ categories: articles
 ---
 # [Reference](https://yzygitzh.github.io/algorithm/2018/11/09/leetcode-summary.html)
 
-
 ---
 1...150
 * [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
@@ -49,7 +48,7 @@ categories: articles
 * [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
 * [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
 
-
+* [156. Binary Tree Upside Down](http://localhost:4000/articles/2019/07/27/Binary-Tree-Upside-Down.html)
 * [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html)
 * [169. Majority Element](http://localhost:4000/articles/2019/01/11/Majority-Element.html) Boyer-Moore Voting Algorithm [ [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html), [2222]() ]
 * [174. Dungeon Game](http://localhost:4000/articles/2019/07/27/Dungeon-Game.html)
@@ -57,6 +56,14 @@ categories: articles
 * [186. Reverse Words in a String II](http://localhost:4000/articles/2019/07/27/Reverse-Words-in-a-String-II.html)
 * [189. Rotate Array](http://localhost:4000/articles/2019/03/21/rotate-array.html)
 * [206. Reverse Linked List](http://localhost:4000/articles/2019/07/27/Reverse-Linked-List.html)
+* [209. Minimum Size Subarray Sum](http://localhost:4000/articles/2019/07/27/Minimum-Size-Subarray-Sum.html)
+* [211. Add and Search Word - Data structure design](http://localhost:4000/articles/2019/05/27/Add-and-Search-Word-Data-structure-design.html)
+* [214. Shortest Palindrome](http://localhost:4000/articles/2019/07/27/Shortest-Palindrome.html) KMP
+* [215. Kth Largest Element in an Array](http://localhost:4000/articles/2019/05/07/Kth-Largest-Element-in-an-Array.html)
+* [218. The Skyline Problem](http://localhost:4000/articles/2019/07/27/The-Skyline-Problem.html)
+* [219. Contains Duplicate II](http://localhost:4000/articles/2019/07/27/Contains-Duplicate-II.html)
+* [221. Maximal Square](http://localhost:4000/articles/2019/07/27/Maximal-Square.html)
+* [223. Rectangle Area](http://localhost:4000/articles/2019/04/28/Rectangle-Area.html)
 
 ---
 07/22/2019
