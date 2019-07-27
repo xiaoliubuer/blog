@@ -43,6 +43,23 @@ for (int i = 0; i < len; i++) {
 ```
 # 参考答案
 ```c++
+//2019-07-22
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if ( nums.size() < 2 ) return nums.size();
+        int left = 0;
+        for ( int i = 1; i < nums.size(); i++ ) {
+            if ( nums[i] != nums[left] ) {
+                left++;
+                nums[left] = nums[i];
+            }
+        }
+        return  left + 1;
+    }
+};
+```
+```c++
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {

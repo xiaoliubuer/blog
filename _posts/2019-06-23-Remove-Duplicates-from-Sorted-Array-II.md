@@ -42,6 +42,22 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 ```c++
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if ( nums.size() <= 2) return nums.size();
+        int slow = 2;
+        for ( int i = 2;  i < nums.size(); i++ ) {
+            if (nums[i] != nums[slow - 2]){
+                nums[slow] = nums[i];
+                slow++;
+            }
+        }
+        return slow;
+    }
+};
+```
+```c++
 // Genius
 class Solution {
 public:

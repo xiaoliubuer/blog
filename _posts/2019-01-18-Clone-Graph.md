@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "** 133. Clone Graph"
-date: 2019-01-18 21:05:23 -0400
+title:  "133. Clone Graph"
+date: 2019-01-18 21:05:00 -0400
 categories: articles
 ---
 Given the head of a graph, return a deep copy (clone) of the graph. Each node in the graph contains a label (int) and a list (List[UndirectedGraphNode]) of its neighbors. There is an edge between the given node and each of the nodes in its neighbors.
@@ -36,8 +36,25 @@ Note: The information about the tree serialization is only meant so that you can
 ```c++
 class Solution {
 public:
-    UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
-        
+    Node* cloneGraph(Node* node) {
+      if (node == nullptr) return nullptr;
+      unordered_map<Node*, Node*> mp;
+      queue<Node*> q;
+      q.push(node);
+      Node* clone_node = new Node(node->val);
+      mp[node] = clone_node;
+      while (!q.empty()) {
+        Node* temp = q.front();
+        q.pop();
+        for (auto neighbor : temp->neighbors) {
+          if (!mp.count(neighbor)) {
+            mp[neighbor] = new Node(neighbor->val);
+            q.push(neighbor);
+          }
+          mp[temp]->neighbors.push_back(mp[neighbor]);
+        }
+      }
+      return clone_node;
     }
 };
 ```

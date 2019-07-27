@@ -26,6 +26,27 @@ return its bottom-up level order traversal as:
 ```
 ```c++
 class Solution {
+  int maxDepth(TreeNode* root) {
+    if (!root) return 0;
+    return 1 + max(maxDepth(root->left), maxDepth(root->right));
+  }
+  void run(TreeNode* root, int level, vector<vector<int>>& res) {
+    if (!root) return;
+    res[res.size() - level - 1].push_back(root->val);
+    run(root->left, level + 1, res);
+    run(root->right, level + 1, res);
+  }  
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+      vector<vector<int>> res;
+      res.resize(maxDepth(root));
+      run(root, 0, res);
+      return res;
+    }
+};
+```
+```c++
+class Solution {
 public:
 
 	void helper(TreeNode* root, int level, vector<vector<int>>& res, int height){

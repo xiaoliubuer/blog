@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "169. Majority Element"
-date: 2019-01-10 20:48:23 -0400
+date: 2019-01-11 20:48:00 -0400
 categories: articles
 ---
 Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -35,6 +35,26 @@ public:
 因为是一个无序数组。针对一个无序数组我们能做些什么？？
 不可以用2二叉，不可以有sliding window。sliding window一般是寻找substring的。
 所以我觉得只能用extra space来找了。
+```c++
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int curr = 0;
+        int count = 0;
+        
+        for (auto i : nums){
+            if ( i == curr ) count++;
+            else count--;
+            if ( count < 0 ) {
+                curr = i;
+                count = 0;
+            }
+        }
+        return curr;
+    }
+};
+```
+
 ```c++
 class Solution {
 public:

@@ -8,8 +8,78 @@ categories: articles
 
 
 ---
-07/20/2019
+1...150
+* [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
+* [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
+* [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+* [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)
+* [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+* [51. N-Queens](https://leetcode.com/problems/n-queens/)
+* [72. Edit Distance](https://leetcode.com/problems/edit-distance/) DP
+* [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/) Array
+* [79. Word Search](https://leetcode.com/problems/word-search/) Backtracking
+* [80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
+* [82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) Linkedlist
+* [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) Important!!!
+* [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/)
+* [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
+* [95. Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/) !!!
+* [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+* [106. Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+* [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)
+* [108. Convert Sorted Array to Binary Search Tree](http://localhost:4000/articles/2019/06/04/Convert-Sorted-Array-to-Binary-Search-Tree.html)
+* [109. Convert Sorted List to Binary Search Tree](http://localhost:4000/articles/2019/06/19/Convert-Sorted-List-to-Binary-Search-Tree.html)
+* [110. Balanced Binary Tree](http://localhost:4000/articles/2019/01/12/Balanced-Binary-Tree.html)
+* [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+* [116. Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
+* [117. Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
+* [119. Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii/)
+* [120. Triangle](https://leetcode.com/problems/triangle/)
+* [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+* [123. Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)
+* [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+* [126. Word Ladder II](https://leetcode.com/problems/word-ladder-ii/)
+* [128. Longest Consecutive Sequence](http://localhost:4000/articles/2019/02/09/Longest-Consecutive-Sequence.html)
+* [131. Palindrome Partitioning](http://localhost:4000/articles/2019/06/25/Palindrome-Partitioning.html)
+* [132. Palindrome Partitioning II](http://localhost:4000/articles/2019/06/25/Palindrome-Partitioning-II.html)
+* [133. Clone Graph](http://localhost:4000/articles/2019/01/18/Clone-Graph.html)
+* [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
+* [139. Word Break](https://leetcode.com/problems/word-break/)
+* [147. Insertion Sort List](https://leetcode.com/problems/insertion-sort-list/)
+* [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
+* [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
 
+
+* [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html)
+* [169. Majority Element](http://localhost:4000/articles/2019/01/11/Majority-Element.html) Boyer-Moore Voting Algorithm [ [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html), [2222]() ]
+* [174. Dungeon Game](http://localhost:4000/articles/2019/07/27/Dungeon-Game.html)
+
+
+
+
+---
+07/22/2019
+* [1087. Brace Expansion](http://localhost:4000/articles/2019/07/22/Brace-Expansion.html)
+	* M:
+	* S:
+	* TC: SC:
+
+---
+07/21/2019
+* [980. Unique Paths III](http://localhost:4000/articles/2019/07/21/Unique-Paths-III.html)
+	* M:
+	* S: 
+	* TC: SC:
+* [842. Split Array into Fibonacci Sequence](http://localhost:4000/articles/2019/07/21/Split-Array-into-Fibonacci-Sequence.html)
+	* M: 
+	* S: 
+	* TC:  SC:
+
+
+---
+07/20/2019
+* [526. Beautiful Arrangement](http://localhost:4000/articles/2019/07/20/Beautiful-Arrangement.html)
+	*
 
 ---
 07/18/2019
