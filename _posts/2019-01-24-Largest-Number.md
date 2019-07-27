@@ -31,6 +31,27 @@ public:
 怎么判断他是最大的呢？？都转成string，然后排序？
 # 尝试解解
 ```c++
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        vector<string> new_nums;
+        for(int i : nums){
+            new_nums.push_back(to_string(i));
+        }
+        sort(new_nums.begin(), new_nums.end(),[](string& A, string& B){
+                return A + B > B + A;
+        });
+        string res;
+        for(string i : new_nums){
+            if ( res.size() > 0 && i == res && i == "0") continue;
+            res += i;
+        }
+            
+        return res;
+    }
+};
+```
+```c++
 //Accepted!!
 class Solution {
 public:

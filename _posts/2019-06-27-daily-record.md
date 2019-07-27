@@ -53,9 +53,10 @@ categories: articles
 * [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html)
 * [169. Majority Element](http://localhost:4000/articles/2019/01/11/Majority-Element.html) Boyer-Moore Voting Algorithm [ [163. Missing Ranges](http://localhost:4000/articles/2019/04/01/Missing-Range.html), [2222]() ]
 * [174. Dungeon Game](http://localhost:4000/articles/2019/07/27/Dungeon-Game.html)
-
-
-
+* [198. House Robber](http://localhost:4000/articles/2019/07/27/House-Robber.html) DP
+* [186. Reverse Words in a String II](http://localhost:4000/articles/2019/07/27/Reverse-Words-in-a-String-II.html)
+* [189. Rotate Array](http://localhost:4000/articles/2019/03/21/rotate-array.html)
+* [206. Reverse Linked List](http://localhost:4000/articles/2019/07/27/Reverse-Linked-List.html)
 
 ---
 07/22/2019
