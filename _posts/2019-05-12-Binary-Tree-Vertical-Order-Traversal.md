@@ -76,6 +76,63 @@ Output:
   [7]
 ]
 ```
+All 3 solutions [link](https://leetcode.com/problems/binary-tree-vertical-order-traversal/discuss/148898/CPP-Easy-to-Understand)
+```c++
+ class Solution {
+public:
+    map<int,vector<int>> hashmap;
+    vector<vector<int>> verticalOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        if(!root)   return ans;
+        
+        queue<pair<TreeNode*,int>> q;
+        q.push(pair(root,0));
+        
+        while(!q.empty()){
+            auto thePair = q.front();
+            q.pop();
+            TreeNode* temp = thePair.first;
+            int level = thePair.second;
+            
+            hashmap[level].push_back(temp->val);
+            if(temp->left)   q.push(pair(temp->left,level-1));
+            if(temp->right)  q.push(pair(temp->right,level+1));
+        }
+        
+        for(auto it = hashmap.begin(); it!=hashmap.end(); it++){
+            ans.push_back(it->second);
+        }
+        return ans;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    map<int,vector<int>> hashmap;
+    vector<vector<int>> verticalOrder(TreeNode* root) {
+        queue<pair<TreeNode*,int>> q;
+        q.push(pair(root,0));
+        vector<vector<int>> ans;  
+        if(!root)   return ans;
+        while(!q.empty()){
+            auto thePair = q.front();
+            q.pop();
+            TreeNode* temp = thePair.first;
+            int level = thePair.second;
+            
+            hashmap[level].push_back(temp->val);
+            if(temp->left)   q.push(pair(temp->left,level-1));
+            if(temp->right)  q.push(pair(temp->right,level+1));
+        }
+        
+        for(auto it = hashmap.begin(); it!=hashmap.end(); it++){
+            ans.push_back(it->second);
+        }
+        return ans;
+    }
+};
+```
 ```c++
 // Not pass all
 class Solution {

@@ -4,11 +4,8 @@ title:  "311. Sparse Matrix Multiplication"
 date: 2019-07-30 08:29:00 -0400
 categories: articles
 ---
-
 Given two sparse matrices A and B, return the result of AB.
-
 You may assume that A's column number is equal to B's row number.
-
 Example:
 ```
 Input:
