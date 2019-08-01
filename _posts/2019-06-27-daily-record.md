@@ -137,6 +137,20 @@ categories: articles
 * [377. Combination Sum IV](http://localhost:4000/articles/2019/07/31/377-Combination-Sum-IV.html)!!!!
 * [378. Kth Smallest Element in a Sorted Matrix](http://localhost:4000/articles/2019/07/31/378-Kth-Smallest-Element-in-a-Sorted-Matrix.html)!!
 * [380. Insert Delete GetRandom O(1)](http://localhost:4000/articles/2019/03/11/Insert-Delete-GetRandom.html)
+* [387. First Unique Character in a String](http://localhost:4000/articles/2019/03/23/First-Unique-Character-in-a-String.html)
+* [392. Is Subsequence](http://localhost:4000/articles/2019/07/31/392-Is-Subsequence.html)
+* [395. Longest Substring with At Least K Repeating Characters](http://localhost:4000/articles/2019/07/31/395-Longest-Substring-with-At-Least-K-Repeating-Characters.html)
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 07/22/2019
