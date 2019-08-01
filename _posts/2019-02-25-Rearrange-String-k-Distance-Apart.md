@@ -72,7 +72,80 @@ public:
     }
 };
 ```
-
+```c++
+class Solution {
+public:
+    string rearrangeString(string str, int k) {
+        if(k == 0) return str;
+        int length = (int)str.size(); 
+        
+        string res;
+        unordered_map<char, int> dict;
+        priority_queue<pair<int, char>> pq;
+        
+        for(char ch : str) dict[ch]++;
+        for(auto it = dict.begin(); it != dict.end(); it++){
+            pq.push(make_pair(it->second, it->first));
+        }
+        
+        while(!pq.empty()){
+            vector<pair<int, char>> cache; //store used char during one while loop
+            int count = min(k, length); //count: how many steps in a while loop
+            for(int i = 0; i < count; i++){
+                if(pq.empty()) return "";
+                auto tmp = pq.top();
+                pq.pop();
+                res.push_back(tmp.second);
+                if(--tmp.first > 0) cache.push_back(tmp);
+                length--;
+            }
+            for(auto p : cache) pq.push(p);
+        }
+        return res;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    /*
+    One vector save each char's count
+    One vector save each char's left-most possible position
+    From left to right, try to fill in each pos with a valid char:
+      among the chars with left-most possible position < cur_pos,
+      select the chars that has the largest count.
+      If such char doesn't exist, then it means all chars cannot be put into this pos, return ""
+    */
+    string rearrangeString(string s, int k) {
+        vector<int> count(26, 0);
+        vector<int> index(26, 0);
+        for (int i = 0; i < s.size(); i++) {
+            count[s[i] - 'a']++;
+        }
+        string res(s.size(), ' ');
+        for (int i = 0; i < s.size(); i++) {
+            int valid_char = findNextValid(count, index, i);
+            if (valid_char == -1) return "";
+            res[i] = 'a' + valid_char;
+            index[valid_char] += k;
+            count[valid_char] --;
+        }
+        return res;
+    }
+    
+    int findNextValid(vector<int>& count, vector<int>& index, int pos) {
+        int valid_char = -1;
+        int max_count = 0;
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > max_count && index[i] <= pos) {
+                valid_char = i;
+                max_count = count[i];
+            }
+        }
+        return valid_char;
+    } 
+};
+```
 # 感想
 非常巧妙，这道题成立有几个前提需要捋清楚，才能下手。重点就在这个while循环里面。
 1. 能够保证出现最多的那个char在都处于至少相隔最多的那个区间里，就能保证。

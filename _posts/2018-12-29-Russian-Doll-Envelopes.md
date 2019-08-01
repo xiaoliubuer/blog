@@ -23,3 +23,29 @@ Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] =>
 
 # 思路
 不会！！！
+
+```c++
+class Solution {
+public:
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
+        int n = envelopes.size();
+        if (n <= 1) {
+            return n;
+        }
+        sort(envelopes.begin(), envelopes.end(), [](vector<int>& a, vector<int>& b) {
+            return a[0] < b[0] or (a[0] == b[0] and a[1] > b[1]);
+        });
+        vector<int> result;
+        for (int i = 0; i < n; i++) {
+            auto it = lower_bound(result.begin(), result.end(), envelopes[i][1]);
+            if (it != result.end()) {
+                *it = envelopes[i][1];
+            }
+            else {
+                result.push_back(envelopes[i][1]);
+            }
+        }
+        return result.size();
+    }
+};
+```

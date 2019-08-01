@@ -123,25 +123,20 @@ categories: articles
 * [347. Top K Frequent Elements](http://localhost:4000/articles/2019/07/30/347-Top-K-Frequent-Elements.html)
 * [348. Design Tic-Tac-Toe](http://localhost:4000/articles/2018/12/31/Design-Tic-tac-toe.html)
 * [349. Intersection of Two Arrays](http://localhost:4000/articles/2019/07/30/349-Intersection-of-Two-Arrays.html)
-* []()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* [353. Design Snake Game](http://localhost:4000/articles/2019/03/17/Design-Snake-Game.html)
+* [354. Russian Doll Envelopes](http://localhost:4000/articles/2018/12/29/Russian-Doll-Envelopes.html)
+* [357. Count Numbers with Unique Digits](http://localhost:4000/articles/2019/07/31/357-Count-Numbers-with-Unique-Digits.html)
+* [358. Rearrange String k Distance Apart](http://localhost:4000/articles/2019/02/25/Rearrange-String-k-Distance-Apart.html)
+* [360. Sort Transformed Array](http://localhost:4000/articles/2019/07/31/360-Sort-Transformed-Array.html)
+* [361. Bomb Enemy](http://localhost:4000/articles/2019/07/31/361-Bomb-Enemy.html)
+* [363. Max Sum of Rectangle No Larger Than K](http://localhost:4000/articles/2018/10/27/Max-Sum-of-Rectangle-No-Larger-Than-K.html)
+* [369. Plus One Linked List](http://localhost:4000/articles/2019/07/31/369-Plus-One-Linked-List.html)
+* [370. Range Addition](http://localhost:4000/articles/2019/07/31/370-Range-Addition.html)
+* [373. Find K Pairs with Smallest Sums](http://localhost:4000/articles/2019/07/31/373-Find-K-Pairs-with-Smallest-Sums.html)
+* [376. Wiggle Subsequence](http://localhost:4000/articles/2019/07/31/376-Wiggle-Subsequence.html)
+* [377. Combination Sum IV](http://localhost:4000/articles/2019/07/31/377-Combination-Sum-IV.html)!!!!
+* [378. Kth Smallest Element in a Sorted Matrix](http://localhost:4000/articles/2019/07/31/378-Kth-Smallest-Element-in-a-Sorted-Matrix.html)!!
+* [380. Insert Delete GetRandom O(1)](http://localhost:4000/articles/2019/03/11/Insert-Delete-GetRandom.html)
 
 ---
 07/22/2019
