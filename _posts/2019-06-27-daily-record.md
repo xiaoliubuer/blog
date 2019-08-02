@@ -140,11 +140,9 @@ categories: articles
 * [387. First Unique Character in a String](http://localhost:4000/articles/2019/03/23/First-Unique-Character-in-a-String.html)
 * [392. Is Subsequence](http://localhost:4000/articles/2019/07/31/392-Is-Subsequence.html)
 * [395. Longest Substring with At Least K Repeating Characters](http://localhost:4000/articles/2019/07/31/395-Longest-Substring-with-At-Least-K-Repeating-Characters.html)
-
-
-
-
-
+* [402. Remove K Digits](http://localhost:4000/articles/2019/05/22/Remove-K-Digits.html)
+* [406. Queue Reconstruction by Height](http://localhost:4000/articles/2019/08/01/406-Queue-Reconstruction-by-Height.html)
+* [409. Longest Palindrome](http://localhost:4000/articles/2019/08/01/409-Longest-Palindrome.html)
 
 
 

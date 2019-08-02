@@ -24,6 +24,37 @@ Explanation:
 There are four ways to split nums into two subarrays.
 The best way is to split it into [7,2,5] and [10,8],
 where the largest sum among the two subarrays is only 18.
+```c++
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+        long l = *max_element(begin(nums), end(nums));
+        long r = accumulate(begin(nums), end(nums), 0L) + 1;
+        while (l < r) {
+        long limit = (r - l) / 2 + l;
+        if (min_groups(nums, limit) > m) 
+            l = limit + 1;
+        else
+            r = limit;
+    }
+        return l;
+    }
+private:
+    int min_groups(const vector<int>& nums,long limit){
+        long sum=0;
+        int groups=1;
+        for(auto& num:nums){
+            if(sum+num>limit){
+                sum=num;
+                ++groups;
+            }else{
+                sum+=num;
+            }
+        }
+        return groups;
+    }
+};
+```
 
 ```java
 // The answer is between maximum value of input array numbers and sum of those numbers.
