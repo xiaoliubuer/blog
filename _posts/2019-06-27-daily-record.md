@@ -143,6 +143,34 @@ categories: articles
 * [402. Remove K Digits](http://localhost:4000/articles/2019/05/22/Remove-K-Digits.html)
 * [406. Queue Reconstruction by Height](http://localhost:4000/articles/2019/08/01/406-Queue-Reconstruction-by-Height.html)
 * [409. Longest Palindrome](http://localhost:4000/articles/2019/08/01/409-Longest-Palindrome.html)
+* [417. Pacific Atlantic Water Flow](http://localhost:4000/articles/2019/01/18/Pacific-Atlantic-Water-Flow.html)
+* [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
+* [425. Word Squares](http://localhost:4000/articles/2019/07/18/Word-Squares.html)
+* [429. N-ary Tree Level Order Traversal](http://localhost:4000/articles/2019/08/02/429-N-ary-Tree-Level-Order-Traversal.html)
+* [433. Minimum Genetic Mutation](http://localhost:4000/articles/2019/04/02/Minimum-Genetic-Mutation.html)
+* [435. Non-overlapping Intervals](http://localhost:4000/articles/2019/08/02/435-Non-overlapping-Intervals.html)
+* [442. Find All Duplicates in a Array](http://localhost:4000/articles/2018/10/09/find-all-duplicate-in-a-array.html)
+* [443. String Compression](http://localhost:4000/articles/2019/05/28/String-Compression.html)
+* [450. Delete Node in a BSTy](http://localhost:4000/articles/2019/08/02/450-Delete-Node-in-a-BST.html)
+
+
+
+
+451...600
+* [451. Sort Characters By Frequency](http://localhost:4000/articles/2019/08/05/451-Sort-Characters-By-Frequency.html)
+* [455. Assign Cookies](http://localhost:4000/articles/2019/08/05/455-Assign-Cookies.html)
+* [456. 132 Pattern](http://localhost:4000/articles/2019/08/05/456-132-Pattern.html)
+* [459. Repeated Substring Pattern](http://localhost:4000/articles/2019/08/05/459-Repeated-Substring-Pattern.html)
+* [460. LFU Cache](http://localhost:4000/articles/2019/08/05/460-LFU-Cache.html)
+* [462. Minimum Moves to Equal Array Elements II](http://localhost:4000/articles/2019/08/05/462-Minimum-Moves-to-Equal-Array-Elements-II.html) !!
+* [463. Island Perimeter](http://localhost:4000/articles/2019/08/05/463-Island-Perimeter.html)
+* [464. Can I Win](http://localhost:4000/articles/2019/08/05/464-Can-I-Win.html)
+* [467. Unique Substrings in Wraparound String](http://localhost:4000/articles/2019/08/05/467-Unique-Substrings-in-Wraparound-String.html)
+* [471. Encode String with Shortest Length](http://localhost:4000/articles/2019/08/05/471-Encode-String-with-Shortest-Length.html)
+* [472. Concatenated Words](http://localhost:4000/articles/2019/01/20/Concatenated-Words.html)
+* [473. Matchsticks to Square](http://localhost:4000/articles/2019/01/21/Matchsticks-to-Square.html)
+* [474. Ones and Zeroes](http://localhost:4000/articles/2019/08/05/474-Ones-and-Zeroes.html)!!!
+
 
 
 
