@@ -55,3 +55,78 @@ There is only one ball and one hole in the maze.
 Both the ball and hole exist on an empty space, and they will not be at the same position initially.
 The given maze does not contain border (like the red rectangle in the example pictures), but you could assume the border of the maze are all walls.
 The maze contains at least 2 empty spaces, and the width and the height of the maze won't exceed 30.
+```c++
+class Solution {
+public:
+    string findShortestWay(vector<vector<int>>& maze, vector<int>& ball, vector<int>& hole) {
+        if (ball[0] == hole[0] && ball[1] == hole[1]) {
+            return "";
+        }
+        const int m = maze.size();
+        if (0 == m) {
+            return "impossible";
+        }
+        const int n = maze[0].size();
+        if (0 == n) {
+            return "impossible";
+        }
+        
+        unordered_map<int, pair<int, string>> visit;
+        priority_queue<node, vector<node>, cmp> pq;
+        pq.push(node(ball[0], ball[1], 0));
+        while (!pq.empty()) {
+            node cur = pq.top();
+            pq.pop();
+            //cout << "[" << cur.x << ", " << cur.y << "]: " << cur.cost << " " << cur.path << endl;
+            if (cur.x == hole[0] && cur.y == hole[1]) {
+                return cur.path;
+            }
+            for (int i = 0; i < 4; i++) {
+                int x = cur.x;
+                int y = cur.y;
+                int cost = cur.cost;
+                string path = cur.path + dir[i];
+                while (x >= 0 && x < m && y >= 0 && y < n && maze[x][y] != 1 && !(x == hole[0] && y == hole[1])) {
+                    x += dirs[i].first;
+                    y += dirs[i].second;
+                    cost++;
+                }
+                if (!(x == hole[0] && y == hole[1])) {
+                    x -= dirs[i].first;
+                    y -= dirs[i].second;
+                    cost--;
+                    if (x == cur.x && y == cur.y) {
+                        continue;
+                    }
+                }
+                if (visit.count(x*n+y) == 0 || cost < visit[x*n+y].first || (cost == visit[x*n+y].first && path < visit[x*n+y].second)) {
+                    visit[x*n+y].first = cost;
+                    visit[x*n+y].second = path;
+                    pq.push(node(x, y, cost, path));
+                }
+            }
+        }
+        
+        return "impossible";
+    }
+    
+private:
+    struct node {
+        int x;
+        int y;
+        int cost;
+        string path;
+        node(int x, int y, int cost, string path = ""): x(x), y(y), cost(cost), path(path) {}
+    };
+    
+    struct cmp {
+        bool operator()(const node& a, const node& b) {
+            return a.cost > b.cost || (a.cost == b.cost && a.path > b.path);
+        }
+    };
+    
+    vector<pair<int, int>> dirs = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+    
+    vector<char> dir = { 'd', 'u', 'r', 'l' };
+};
+```

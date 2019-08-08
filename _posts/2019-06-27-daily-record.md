@@ -170,10 +170,29 @@ categories: articles
 * [472. Concatenated Words](http://localhost:4000/articles/2019/01/20/Concatenated-Words.html)
 * [473. Matchsticks to Square](http://localhost:4000/articles/2019/01/21/Matchsticks-to-Square.html)
 * [474. Ones and Zeroes](http://localhost:4000/articles/2019/08/05/474-Ones-and-Zeroes.html)!!!
-
-
-
-
+* [480. Sliding Window Median](http://localhost:4000/articles/2019/08/06/480-Sliding-Window-Median.html)
+* [484. Find Permutation](http://localhost:4000/articles/2019/08/06/484-Find-Permutation.html)
+* [486. Predict the Winner](http://localhost:4000/articles/2018/12/29/Predict-the-Winner.html)!!!!
+* [487. Max Consecutive Ones II](https://leetcode.com/problems/max-consecutive-ones-ii/)
+* [489. Robot Room Cleaner](http://localhost:4000/articles/2019/08/06/489-Robot-Room-Cleaner.html)
+* [490. The Maze](http://localhost:4000/articles/2019/01/21/The-Maze.html)
+* [491. Increasing Subsequences](http://localhost:4000/articles/2019/08/06/491-Increasing-Subsequences.html)
+* [492. Construct the Rectangle](http://localhost:4000/articles/2019/08/06/492-Construct-the-Rectangle.html)
+* [493. Reverse Pairs](http://localhost:4000/articles/2019/08/06/493-Reverse-Pairs.html)
+* [494. Target Sum](http://localhost:4000/articles/2019/01/26/Target-Sum.html)
+* [501. Find Mode in Binary Search Tree](http://localhost:4000/articles/2019/08/06/501-Find-Mode-in-Binary-Search-Tree.html)
+* [503. Next Greater Element II](http://localhost:4000/articles/2019/05/22/Next-Greater-ElementII.html)
+* [513. Find Bottom Left Tree Value](http://localhost:4000/articles/2019/08/07/513-Find-Bottom-Left-Tree-Value.html)
+* [515. Find Largest Value in Each Tree Row](http://localhost:4000/articles/2019/01/26/Find-Largest-Value-in-Each-Tree-Row.html)
+* [516. Longest Palindromic Subsequence](http://localhost:4000/articles/2019/05/22/Longest-Palindromic-Subsequence.html)
+* [518. Coin Change 2](http://localhost:4000/articles/2019/05/30/Coin-Change-2.html)
+* [522. Longest Uncommon Subsequence II](http://localhost:4000/articles/2019/08/07/522-Longest-Uncommon-Subsequence-II.html)
+* [524. Longest Word in Dictionary through Deleting](http://localhost:4000/articles/2019/08/07/524-Longest-Word-in-Dictionary-through-Deleting.html)
+* [525. Contiguous Array](http://localhost:4000/articles/2019/08/07/525-Contiguous-Array.html)
+* [526. Beautiful Arrangement](http://localhost:4000/articles/2019/07/20/Beautiful-Arrangement.html)
+* [530. Minimum Absolute Difference in BST](http://localhost:4000/articles/2019/08/07/530-Minimum-Absolute-Difference-in-BST.html)
+* [531. Lonely Pixel I](http://localhost:4000/articles/2019/01/26/Lonely-Pixel-I.html)
+* [532. K-diff Pairs in an Array](http://localhost:4000/articles/2019/08/07/532-K-diff-Pairs-in-an-Array.html)
 
 
 
